@@ -1,12 +1,17 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BPPI UMS Website | Khuzairy</title>
+    <title>BPPI UMS Website | Project Details</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         * {
@@ -15,16 +20,18 @@
             box-sizing: border-box;
         }
 
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #f6f8fc;
-            color: #1e1e2f;
-            line-height: 1.6;
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* SIDEBAR */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #f5f7fb;
+            color: #252b3a;
+            line-height: 1.7;
+        }
+
+        /* SIDEBAR - PRESERVED DESIGN */
 
         .sidebar {
             width: 240px;
@@ -40,7 +47,7 @@
             align-items: center;
             text-align: center;
             box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
-            z-index: 10;
+            z-index: 100;
             overflow-y: auto;
             transition: all 0.2s;
         }
@@ -102,7 +109,9 @@
             transform: translateX(4px);
         }
 
-        .sidebar-nav a:hover i { color: #b7cdff; }
+        .sidebar-nav a:hover i {
+            color: #b7cdff;
+        }
 
         .sidebar-nav a.active {
             background: rgba(255, 255, 255, 0.08);
@@ -139,7 +148,7 @@
             position: fixed;
             top: 18px;
             right: 18px;
-            z-index: 20;
+            z-index: 120;
             background: #1a1a2e;
             color: white;
             border: none;
@@ -155,224 +164,376 @@
         .main-content {
             margin-left: 240px;
             min-height: 100vh;
-            padding: 55px 7%;
+            padding: 55px 6%;
         }
 
         .page-container {
-            width: 100%;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: auto;
         }
 
         .breadcrumb {
-            color: #7b879e;
-            font-size: 0.9rem;
-            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #8992a5;
+            font-size: 0.88rem;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
         }
 
         .breadcrumb a {
-            color: #3b5cbf;
+            color: #64748b;
             text-decoration: none;
+            transition: 0.2s;
         }
+
+        .breadcrumb a:hover {
+            color: #0d9488;
+        }
+
+        .breadcrumb i {
+            font-size: 0.7rem;
+        }
+
+        /* PROJECT HEADER */
 
         .project-header {
-            margin-bottom: 30px;
-            animation: fadeInUp 0.8s ease;
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #e9edf4;
+            border-radius: 25px;
+            padding: 42px;
+            margin-bottom: 55px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(25, 42, 70, 0.045);
+            animation: fadeUp 0.7s ease both;
         }
 
-        .project-label {
-            display: inline-block;
-            background: #e8edff;
-            color: #3b5cbf;
-            padding: 7px 15px;
-            border-radius: 30px;
-            font-size: 0.8rem;
+        .project-header::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            right: -100px;
+            top: -150px;
+            background: radial-gradient(circle, rgba(20, 184, 166, 0.13), transparent 70%);
+            pointer-events: none;
+        }
+
+        .project-title {
+            position: relative;
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 900;
+            letter-spacing: -3px;
+            line-height: 1.05;
+            background: linear-gradient(115deg, #064e3b 5%, #059669 48%, #2dd4bf 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 17px;
+        }
+
+        .project-subtitle {
+            color: #687386;
+            font-size: 1.08rem;
+            max-width: 760px;
+            margin-bottom: 28px;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            background: #f7f9fc;
+            border: 1px solid #edf0f5;
+            padding: 10px 15px;
+            border-radius: 12px;
+            color: #596579;
+            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 15px;
         }
 
-        .project-header h1 {
-            font-size: clamp(2.2rem, 5vw, 3.3rem);
-            color: #1a1a2e;
-            letter-spacing: -1.5px;
-            line-height: 1.2;
-            margin-bottom: 15px;
+        .meta-item i {
+            color: #0d9488;
         }
 
-        .project-header p {
-            color: #68758d;
-            font-size: 1.05rem;
-            max-width: 750px;
+        .status-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+            font-size: 0.85rem;
+            font-weight: 800;
         }
 
-        /* SECTIONS */
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #16a34a;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.12);
+        }
+
+        /* SECTION HEADINGS */
+
+        .section-heading {
+            margin-bottom: 25px;
+        }
+
+        .section-heading .eyebrow {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: #0d9488;
+            margin-bottom: 7px;
+        }
+
+        .section-heading h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #202a3b;
+            letter-spacing: -0.7px;
+        }
+
+        .section-heading p {
+            color: #7b8495;
+            font-size: 0.95rem;
+            margin-top: 7px;
+        }
+
+        /* WEBSITE INTERFACE GALLERY */
+
+        .gallery-section {
+            margin-bottom: 65px;
+            animation: fadeUp 0.7s ease both;
+        }
+
+        .gallery-panel {
+            background: #ffffff;
+            border-radius: 23px;
+            padding: 30px;
+            border: 1px solid #e8edf2;
+            border-top: 5px solid #0d9488;
+            background: linear-gradient(180deg, #f0faf8 0%, #ffffff 190px);
+            box-shadow: 0 10px 30px rgba(25, 42, 70, 0.035);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 23px;
+        }
+
+        .gallery-item {
+            background: #ffffff;
+            border: 1px solid #e9edf2;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(30, 50, 70, 0.11);
+        }
+
+        .gallery-image-wrap {
+            overflow: hidden;
+            position: relative;
+            background: #eef2f7;
+        }
+
+        .gallery-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            display: block;
+            object-fit: cover;
+            object-position: top;
+            background: #eef2f7;
+            cursor: zoom-in;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.025);
+        }
+
+        .zoom-hint {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 11px;
+            border-radius: 8px;
+            background: rgba(20, 30, 45, 0.78);
+            color: #ffffff;
+            font-size: 0.72rem;
+            opacity: 0;
+            transform: translateY(5px);
+            transition: 0.25s ease;
+            pointer-events: none;
+        }
+
+        .gallery-item:hover .zoom-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-caption {
+            padding: 16px 18px;
+            border-bottom: 3px solid #d5f5ed;
+        }
+
+        .gallery-caption h3 {
+            font-size: 0.98rem;
+            font-weight: 800;
+            color: #303b4e;
+            margin-bottom: 3px;
+        }
+
+        .gallery-caption p {
+            font-size: 0.8rem;
+            color: #8a93a3;
+        }
+
+        /* PROJECT OVERVIEW */
 
         .content-section {
-            background: white;
-            padding: 30px;
-            border-radius: 18px;
-            border: 1px solid #e8ecf4;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 20px rgba(20, 35, 70, 0.04);
+            margin-bottom: 55px;
         }
 
-        .content-section h2 {
-            color: #1a1a2e;
-            font-size: 1.35rem;
+        .overview-card {
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #e9edf4;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 8px 25px rgba(25, 42, 70, 0.035);
+            overflow: hidden;
+        }
+
+        .overview-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #0d9488, #5eead4);
+        }
+
+        .overview-card p {
+            color: #657084;
+            font-size: 0.97rem;
             margin-bottom: 15px;
         }
 
-        .content-section h2 i {
-            color: #3b5cbf;
-            margin-right: 10px;
+        .overview-card p:last-child {
+            margin-bottom: 0;
         }
 
-        .content-section p {
-            color: #596780;
-            margin-bottom: 12px;
-        }
+        /* PROJECT INFORMATION */
 
-        /* SCREENSHOT DISPLAY */
-
-        .main-screenshot {
-            width: 100%;
-            margin-bottom: 30px;
-        }
-
-        .main-screenshot .screenshot-placeholder {
-            min-height: 350px;
-        }
-
-        .screenshot-placeholder {
-            width: 100%;
-            min-height: 240px;
-            background: #f1f3f9;
-            border: 2px dashed #c7d0e2;
-            border-radius: 14px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 25px;
-            color: #8994a8;
-        }
-
-        .screenshot-placeholder i {
-            font-size: 2.8rem;
-            color: #9aa9c7;
-            margin-bottom: 15px;
-        }
-
-        .screenshot-placeholder strong {
-            color: #52658b;
-            margin-bottom: 5px;
-        }
-
-        .screenshot-placeholder span {
-            font-size: 0.85rem;
-        }
-
-        .screenshot-caption {
-            text-align: center;
-            color: #8994a8;
-            font-size: 0.85rem;
-            margin-top: 12px;
-        }
-
-        /* TWO COLUMN SCREENSHOTS */
-
-        .screenshot-grid {
+        .info-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 22px;
-            margin-top: 20px;
-        }
-
-        .screenshot-card {
-            min-width: 0;
-        }
-
-        .screenshot-card h3 {
-            color: #1a1a2e;
-            font-size: 1rem;
-            margin-bottom: 12px;
-        }
-
-        .screenshot-card .screenshot-placeholder {
-            min-height: 260px;
-        }
-
-        /* CONTRIBUTIONS */
-
-        .contribution-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .contribution-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            color: #596780;
-            margin-bottom: 14px;
-        }
-
-        .contribution-list i {
-            color: #3b5cbf;
-            margin-top: 5px;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .tech-tag {
-            background: #eef2ff;
-            color: #3b5cbf;
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .project-info {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-            margin-bottom: 30px;
+            margin-bottom: 55px;
         }
 
         .info-card {
-            background: white;
-            padding: 20px;
-            border-radius: 16px;
-            border: 1px solid #e8ecf4;
-            box-shadow: 0 5px 20px rgba(20, 35, 70, 0.04);
+            background: #ffffff;
+            border: 1px solid #e9edf4;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 8px 25px rgba(25, 42, 70, 0.035);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .info-card i {
-            color: #3b5cbf;
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(25, 42, 70, 0.08);
+        }
+
+        .info-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-family: 'Outfit', sans-serif;
             font-size: 1.2rem;
-            margin-bottom: 10px;
+            color: #263449;
+            margin-bottom: 22px;
         }
 
-        .info-card h4 {
-            color: #8994a8;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin-bottom: 5px;
+        .info-card h3 i {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e8f8f4;
+            color: #0d9488;
+            border-radius: 12px;
+            font-size: 1rem;
         }
 
-        .info-card p {
-            color: #1a1a2e;
-            font-weight: 600;
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        /* BUTTONS AND FOOTER */
+        .tech-tags span {
+            padding: 9px 13px;
+            background: #effaf7;
+            border: 1px solid #d5f1e8;
+            color: #16745b;
+            border-radius: 9px;
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            color: #697589;
+            font-size: 0.91rem;
+            margin-bottom: 15px;
+        }
+
+        .info-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-list i {
+            color: #0d9488;
+            margin-top: 5px;
+        }
+
+        /* BACK BUTTON */
 
         .back-button {
             display: inline-flex;
@@ -393,6 +554,8 @@
             transform: translateY(-3px);
         }
 
+        /* FOOTER */
+
         .footer {
             text-align: center;
             color: #8994a8;
@@ -400,11 +563,81 @@
             padding: 45px 0 10px;
         }
 
-        @keyframes fadeInUp {
+        /* IMAGE LIGHTBOX */
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 15, 25, 0.94);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 35px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.25s ease;
+        }
+
+        .lightbox.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            max-width: 1100px;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 78vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .lightbox-caption {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .lightbox-close:hover {
+            background: #ffffff;
+            color: #1f2b4e;
+            transform: rotate(90deg);
+        }
+
+        /* ANIMATIONS */
+
+        @keyframes fadeUp {
             from {
                 opacity: 0;
                 transform: translateY(25px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -414,42 +647,96 @@
         /* RESPONSIVE */
 
         @media (max-width: 1000px) {
-            .main-content { padding: 45px 5%; }
+            .main-content {
+                padding: 45px 5%;
+            }
+
+            .project-header {
+                padding: 32px;
+            }
         }
 
         @media (max-width: 768px) {
-            .menu-toggle { display: block; }
+            .menu-toggle {
+                display: block;
+            }
 
             .sidebar {
                 transform: translateX(-100%);
                 transition: transform 0.3s ease;
             }
 
-            .sidebar.open { transform: translateX(0); }
+            .sidebar.open {
+                transform: translateX(0);
+            }
 
             .main-content {
                 margin-left: 0;
                 padding: 90px 25px 40px;
             }
 
-            .project-info { grid-template-columns: 1fr; }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
 
-            .screenshot-grid { grid-template-columns: 1fr; }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
 
-            .content-section { padding: 23px; }
+            .gallery-panel {
+                padding: 20px;
+            }
 
-            .main-screenshot .screenshot-placeholder {
-                min-height: 230px;
+            .project-header {
+                padding: 28px;
+            }
+
+            .overview-card {
+                padding: 25px;
+            }
+
+            .lightbox {
+                padding: 20px;
             }
         }
 
         @media (max-width: 420px) {
-            .main-content { padding: 85px 18px 30px; }
+            .main-content {
+                padding: 85px 18px 30px;
+            }
+
+            .project-header {
+                padding: 23px;
+            }
+
+            .project-title {
+                letter-spacing: -1.5px;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .meta-item,
+            .status-box {
+                width: 100%;
+            }
+
+            .section-heading h2 {
+                font-size: 1.7rem;
+            }
+
+            .info-card {
+                padding: 22px;
+            }
         }
     </style>
 </head>
 
 <body>
+
+    <!-- MOBILE MENU -->
 
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
@@ -458,10 +745,12 @@
     <!-- SIDEBAR -->
 
     <aside class="sidebar" id="sidebar">
+
         <h2>Khuzairy</h2>
         <div class="title-tag">Information Technology Student</div>
 
         <nav class="sidebar-nav">
+
             <a href="index.html">
                 <i class="fas fa-home"></i>
                 <span>Home</span>
@@ -491,225 +780,366 @@
                 <i class="fas fa-comment-dots"></i>
                 <span>Your Comments</span>
             </a>
+
         </nav>
 
         <div class="social-links">
-            <a href="https://www.linkedin.com/in/mohdkhuzairy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+
+            <a href="https://www.linkedin.com/in/mohdkhuzairy"
+               target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <i class="fab fa-linkedin-in"></i>
             </a>
 
-            <a href="https://github.com/MohdKhuzairyy" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <a href="https://github.com/MohdKhuzairyy"
+               target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <i class="fab fa-github"></i>
             </a>
 
         </div>
+
     </aside>
 
     <!-- MAIN CONTENT -->
 
     <main class="main-content">
+
         <div class="page-container">
 
+            <!-- BREADCRUMB -->
+
             <div class="breadcrumb">
-                <a href="index.html">Home</a> /
-                <a href="portfolio.html">My Portfolio</a> /
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="portfolio.html">My Portfolio</a>
+                <i class="fas fa-chevron-right"></i>
                 BPPI UMS Website
             </div>
 
+            <!-- PROJECT HEADER -->
+
             <header class="project-header">
-                <span class="project-label">
-                    <i class="fas fa-globe"></i> Web Development
-                </span>
 
-                <h1>BPPI UMS Website</h1>
+                <h1 class="project-title">BPPI UMS Website</h1>
 
-                <p>
+                <p class="project-subtitle">
                     A website development project for Bahagian Penyelidikan
                     dan Penerbitan Ilmiah (BPPI), Universiti Malaysia Sabah.
                     The project involved designing and developing web pages
                     to present departmental information and services.
                 </p>
+
+                <div class="project-meta">
+
+                    <div class="meta-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        Project Year: 2026
+                    </div>
+
+                    <div class="meta-item">
+                        <i class="fas fa-user"></i>
+                        Individual Project
+                    </div>
+
+                    <div class="meta-item">
+                        <i class="fas fa-laptop-code"></i>
+                        Website Development
+                    </div>
+
+                    <div class="status-box">
+                        <span class="status-dot"></span>
+                        Ongoing
+                    </div>
+
+                </div>
+
             </header>
 
-            <!-- PROJECT INFORMATION -->
+            <!-- WEBSITE INTERFACE GALLERY -->
 
-            <div class="project-info">
+            <section class="gallery-section">
 
-                <div class="info-card">
-                    <i class="fas fa-calendar-alt"></i>
-                    <h4>Development Period</h4>
-                    <p>Last Semester Break</p>
+                <div class="section-heading">
+                    <span class="eyebrow">01 / Website Showcase</span>
+                    <h2>Website Interface</h2>
+                    <p>
+                        A visual preview of the pages and features developed
+                        for the BPPI UMS website. Click any image to view it
+                        in a larger size.
+                    </p>
                 </div>
 
-                <div class="info-card">
-                    <i class="fas fa-laptop-code"></i>
-                    <h4>Project Type</h4>
-                    <p>Website Development</p>
+                <div class="gallery-panel">
+
+                    <div class="gallery-grid">
+
+                        <!-- HOMEPAGE -->
+
+                        <article class="gallery-item">
+
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="assets/images/bppi/bppi-homepage.jpeg"
+                                    alt="BPPI UMS Homepage"
+                                    class="gallery-image"
+                                    data-caption="BPPI UMS Homepage">
+
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i>
+                                    Click to zoom
+                                </span>
+                            </div>
+
+                            <div class="gallery-caption">
+                                <h3>Homepage</h3>
+                                <p>Main landing page and departmental introduction</p>
+                            </div>
+
+                        </article>
+
+                        <!-- CONFERENCE INFORMATION -->
+
+                        <article class="gallery-item">
+
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="assets/images/bppi/bppi-conference.jpeg"
+                                    alt="BPPI UMS Conference Information Page"
+                                    class="gallery-image"
+                                    data-caption="Conference Information">
+
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i>
+                                    Click to zoom
+                                </span>
+                            </div>
+
+                            <div class="gallery-caption">
+                                <h3>Conference Information</h3>
+                                <p>Conference details and related information</p>
+                            </div>
+
+                        </article>
+
+                        <!-- CONTACT FORM -->
+
+                        <article class="gallery-item">
+
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="assets/images/bppi/bppi-contact-form.jpeg"
+                                    alt="BPPI UMS Contact Form"
+                                    class="gallery-image"
+                                    data-caption="Contact Us Form">
+
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i>
+                                    Click to zoom
+                                </span>
+                            </div>
+
+                            <div class="gallery-caption">
+                                <h3>Contact Us Form</h3>
+                                <p>Contact section and visitor enquiry form</p>
+                            </div>
+
+                        </article>
+
+                        <!-- OFFICE LOCATION -->
+
+                        <article class="gallery-item">
+
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="assets/images/bppi/bppi-location.jpeg"
+                                    alt="BPPI UMS Office Location and Directions"
+                                    class="gallery-image"
+                                    data-caption="Office Location and Directions">
+
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i>
+                                    Click to zoom
+                                </span>
+                            </div>
+
+                            <div class="gallery-caption">
+                                <h3>Office Location & Directions</h3>
+                                <p>Map and location information for visitors</p>
+                            </div>
+
+                        </article>
+
+                    </div>
+
                 </div>
 
-                <div class="info-card">
-                    <i class="fas fa-university"></i>
-                    <h4>Organisation</h4>
-                    <p>BPPI, UMS</p>
-                </div>
-
-            </div>
-
-            <!-- MAIN WEBSITE SCREENSHOT -->
-
-            <section class="main-screenshot">
-                <div class="screenshot-placeholder">
-                    <i class="fas fa-desktop"></i>
-                    <strong>BPPI UMS Main Website Screenshot</strong>
-                    <span>Add your main homepage screenshot here</span>
-                    <!-- Replace this placeholder with your homepage screenshot -->
-                </div>
-
-                <p class="screenshot-caption">
-                    Figure 1: Main page of the BPPI UMS website
-                </p>
             </section>
 
             <!-- PROJECT OVERVIEW -->
 
             <section class="content-section">
-                <h2><i class="fas fa-info-circle"></i>Project Overview</h2>
 
-                <p>
-                    The BPPI UMS website was developed to provide a digital
-                    platform for presenting information about the department,
-                    its services, research activities and related resources.
-                </p>
+                <div class="section-heading">
+                    <span class="eyebrow">02 / About the Project</span>
+                    <h2>Project Overview</h2>
+                    <p>
+                        An overview of the purpose and development of the BPPI UMS website.
+                    </p>
+                </div>
 
-                <p>
-                    The development focused on organising information into
-                    accessible sections and creating a consistent website
-                    layout that allows visitors to navigate the department's
-                    information more easily.
-                </p>
-            </section>
+                <div class="overview-card">
 
-            <!-- OTHER WEBSITE PAGES -->
+                    <p>
+                        The BPPI UMS website was developed to provide a digital
+                        platform for presenting information about the department,
+                        its services, research activities and related resources.
+                    </p>
 
-            <section class="content-section">
-                <h2><i class="fas fa-images"></i>Website Pages and Features</h2>
-
-                <p>
-                    Apart from the main homepage, the website includes other
-                    sections that provide visitors with useful departmental
-                    information and ways to get in touch.
-                </p>
-
-                <div class="screenshot-grid">
-
-                    <div class="screenshot-card">
-                        <h3>
-                            <i class="fas fa-envelope"></i>
-                            Contact Us Form
-                        </h3>
-
-                        <div class="screenshot-placeholder">
-                            <i class="fas fa-file-alt"></i>
-                            <strong>Contact Us Form Screenshot</strong>
-                            <span>Add your Contact Us form screenshot here</span>
-                        </div>
-
-                        <p class="screenshot-caption">
-                            Figure 2: Contact Us page and enquiry form
-                        </p>
-                    </div>
-
-                    <div class="screenshot-card">
-                        <h3>
-                            <i class="fas fa-map-marker-alt"></i>
-                            Department Location
-                        </h3>
-
-                        <div class="screenshot-placeholder">
-                            <i class="fas fa-map"></i>
-                            <strong>Department Location Screenshot</strong>
-                            <span>Add your department location screenshot here</span>
-                        </div>
-
-                        <p class="screenshot-caption">
-                            Figure 3: Department location information
-                        </p>
-                    </div>
+                    <p>
+                        The development focused on organising information into
+                        accessible sections and creating a consistent website
+                        layout that allows visitors to navigate the department's
+                        information more easily.
+                    </p>
 
                 </div>
+
             </section>
 
-            <!-- CONTRIBUTIONS -->
+            <!-- PROJECT INFORMATION -->
 
             <section class="content-section">
-                <h2><i class="fas fa-tasks"></i>My Contributions</h2>
 
-                <p>
-                    My involvement in this project focused on website design
-                    and development. The work included organising page layouts,
-                    presenting information and building website sections.
-                </p>
-
-                <ul class="contribution-list">
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <span>Designed and organised website page layouts.</span>
-                    </li>
-
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <span>Developed website sections to present departmental information.</span>
-                    </li>
-
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <span>Worked on the Contact Us section and department information.</span>
-                    </li>
-
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <span>Improved the presentation and navigation of website content.</span>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- TECHNOLOGY STACK -->
-
-            <section class="content-section">
-                <h2><i class="fas fa-code"></i>Tools and Technologies</h2>
-
-                <p>
-                    The website was developed using a content management
-                    system and page-building tools, alongside web technologies.
-                </p>
-
-                <div class="tech-stack">
-                    <span class="tech-tag">Joomla</span>
-                    <span class="tech-tag">SP Page Builder Pro</span>
-                    <span class="tech-tag">HTML</span>
-                    <span class="tech-tag">CSS</span>
-                    <span class="tech-tag">Web Design</span>
-                    <span class="tech-tag">Responsive Design</span>
+                <div class="section-heading">
+                    <span class="eyebrow">03 / Development Details</span>
+                    <h2>Project Information</h2>
+                    <p>
+                        The technologies used and the main objectives behind this project.
+                    </p>
                 </div>
+
+                <div class="info-grid">
+
+                    <!-- TOOLS AND TECHNOLOGIES -->
+
+                    <article class="info-card">
+
+                        <h3>
+                            <i class="fas fa-layer-group"></i>
+                            Tools & Technologies
+                        </h3>
+
+                        <div class="tech-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>Joomla</span>
+                            <span>SP Page Builder Pro</span>
+                            <span>Web Design</span>
+                            <span>Responsive Design</span>
+                            <span>Content Management</span>
+                            <span>UI Design</span>
+                        </div>
+
+                    </article>
+
+                    <!-- PROJECT OBJECTIVES -->
+
+                    <article class="info-card">
+
+                        <h3>
+                            <i class="fas fa-bullseye"></i>
+                            Project Objectives
+                        </h3>
+
+                        <ul class="info-list">
+
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>
+                                    To establish a centralised digital platform
+                                    for presenting BPPI UMS departmental information.
+                                </span>
+                            </li>
+
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>
+                                    To organise research, publication and conference
+                                    information into accessible website sections.
+                                </span>
+                            </li>
+
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>
+                                    To improve the website's layout, visual consistency
+                                    and navigation experience.
+                                </span>
+                            </li>
+
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>
+                                    To provide visitors with convenient access to
+                                    contact information and departmental location details.
+                                </span>
+                            </li>
+
+                        </ul>
+
+                    </article>
+
+                </div>
+
             </section>
+
+            <!-- BACK BUTTON -->
 
             <a href="portfolio.html" class="back-button">
                 <i class="fas fa-arrow-left"></i>
-                Back to Portfolio
+                Back to My Portfolio
             </a>
 
+            <!-- FOOTER -->
+
             <footer class="footer">
-                <p>&copy; <span id="year"></span> Mohammad Khuzairy. All Rights Reserved.</p>
+                <p>
+                    &copy; <span id="year"></span>
+                    Mohammad Khuzairy. All Rights Reserved.
+                </p>
             </footer>
 
         </div>
+
     </main>
 
+    <!-- IMAGE LIGHTBOX -->
+
+    <div class="lightbox" id="lightbox" role="dialog"
+         aria-modal="true" aria-label="Image preview">
+
+        <button class="lightbox-close" id="lightboxClose"
+                aria-label="Close image preview">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImage">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+
     <script>
+
+        // MOBILE SIDEBAR
+
         const menuToggle = document.getElementById("menuToggle");
         const sidebar = document.getElementById("sidebar");
 
         menuToggle.addEventListener("click", function () {
+
             sidebar.classList.toggle("open");
 
             const icon = menuToggle.querySelector("i");
@@ -721,19 +1151,84 @@
                 icon.classList.remove("fa-times");
                 icon.classList.add("fa-bars");
             }
+
         });
 
         document.querySelectorAll(".sidebar-nav a").forEach(link => {
+
             link.addEventListener("click", function () {
+
                 sidebar.classList.remove("open");
 
                 const icon = menuToggle.querySelector("i");
                 icon.classList.remove("fa-times");
                 icon.classList.add("fa-bars");
+
             });
+
         });
 
-        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // UPDATE FOOTER YEAR
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        // IMAGE LIGHTBOX
+
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxCaption = document.getElementById("lightboxCaption");
+        const lightboxClose = document.getElementById("lightboxClose");
+
+        document.querySelectorAll(".gallery-image").forEach(image => {
+
+            image.addEventListener("click", function () {
+
+                lightboxImage.src = this.src;
+                lightboxImage.alt = this.alt;
+
+                lightboxCaption.textContent =
+                    this.dataset.caption || this.alt;
+
+                lightbox.classList.add("open");
+                document.body.style.overflow = "hidden";
+
+                lightboxClose.focus();
+
+            });
+
+        });
+
+
+        function closeLightbox() {
+
+            lightbox.classList.remove("open");
+            document.body.style.overflow = "";
+
+            lightboxImage.src = "";
+
+        }
+
+        lightboxClose.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", function (event) {
+
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+
+        });
+
+        document.addEventListener("keydown", function (event) {
+
+            if (event.key === "Escape" && lightbox.classList.contains("open")) {
+                closeLightbox();
+            }
+
+        });
+
     </script>
 
 </body>
