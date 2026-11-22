@@ -1,0 +1,1732 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Biodata | Khuzairy</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #f4efe6;
+            color: #33352f;
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           SIDEBAR - ORIGINAL DESIGN PRESERVED
+        ========================================= */
+
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            color: #f0f0f5;
+            padding: 2rem 1.2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+            z-index: 10;
+            overflow-y: auto;
+            transition: all 0.2s;
+        }
+
+        .sidebar h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.3rem;
+            background: linear-gradient(to right, #e0e7ff, #b1c9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .sidebar .title-tag {
+            color: #aab8e0;
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 1rem;
+            width: 100%;
+        }
+
+        .sidebar-nav {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ccd6f0;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 14px;
+            font-weight: 450;
+            transition: all 0.2s ease;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .sidebar-nav a i {
+            width: 22px;
+            font-size: 1.1rem;
+            color: #7d93c7;
+            transition: 0.2s;
+        }
+
+        .sidebar-nav a:hover {
+            background: rgba(255, 255, 255, 0.07);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.05);
+            transform: translateX(4px);
+        }
+
+        .sidebar-nav a:hover i {
+            color: #b7cdff;
+        }
+
+        .sidebar-nav a.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border-left: 3px solid #6d8cff;
+        }
+
+        .sidebar .social-links {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            display: flex;
+            gap: 1.2rem;
+            font-size: 1.2rem;
+            color: #859bc9;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .sidebar .social-links a {
+            color: #9aafdb;
+            transition: 0.2s;
+        }
+
+        .sidebar .social-links a:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* =========================================
+           MOBILE MENU
+        ========================================= */
+
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 20;
+            background: #1a1a2e;
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* =========================================
+           MAIN LAYOUT
+        ========================================= */
+
+        .main-content {
+            margin-left: 240px;
+            min-height: 100vh;
+            padding: 55px 6%;
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* =========================================
+           PAGE TITLE
+        ========================================= */
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 45px;
+            animation: fadeUp 0.8s ease both;
+        }
+
+        .page-header .title-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 15px;
+            background: #ebe1d1;
+            border: 1px solid #ded0bb;
+            border-radius: 50px;
+            color: #8a6c47;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            color: #725333;
+            background: linear-gradient(120deg, #8a6744, #b18a5c, #6c5036);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-decoration {
+            width: 75px;
+            height: 4px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #b18a5c, #e2c9a6);
+            margin: 18px auto 0;
+        }
+
+        /* =========================================
+           COMMON SECTION STYLE
+        ========================================= */
+
+        .section {
+            background: #ffffff;
+            padding: 32px;
+            border-radius: 22px;
+            margin-bottom: 28px;
+            border: 1px solid #eee8dd;
+            box-shadow: 0 10px 35px rgba(92, 71, 45, 0.055);
+            animation: fadeUp 0.8s ease both;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 25px;
+        }
+
+        .section-icon {
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: #f4ede3;
+            color: #99764e;
+            font-size: 1.15rem;
+        }
+
+        .section-heading h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #3e3a32;
+            letter-spacing: -0.5px;
+        }
+
+        .section-heading p {
+            font-size: 0.85rem;
+            color: #9a9285;
+        }
+
+        /* =========================================
+           PERSONAL PROFILE - 4 / 8 LAYOUT
+        ========================================= */
+
+        .profile-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+            gap: 28px;
+            align-items: stretch;
+            margin-bottom: 30px;
+        }
+
+        /* CREATIVE PORTRAIT */
+
+        .portrait-card {
+            position: relative;
+            min-height: 500px;
+            background: linear-gradient(155deg, #d9c6a9, #b59a76);
+            border-radius: 23px;
+            padding: 22px;
+            overflow: hidden;
+            isolation: isolate;
+            box-shadow: 0 16px 35px rgba(104, 78, 45, 0.16);
+        }
+
+        .portrait-card::before {
+            content: "";
+            position: absolute;
+            width: 310px;
+            height: 310px;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 50%;
+            top: -120px;
+            right: -120px;
+            z-index: -1;
+        }
+
+        .portrait-card::after {
+            content: "";
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -90px;
+            z-index: -1;
+        }
+
+        .portrait-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .portrait-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .portrait-stage {
+            position: relative;
+            width: 100%;
+            height: 330px;
+            margin: 20px auto 20px;
+            max-width: 290px;
+        }
+
+        .portrait-frame-back {
+            position: absolute;
+            inset: 0;
+            border: 2px solid rgba(255, 255, 255, 0.75);
+            border-radius: 150px 150px 18px 18px;
+            transform: rotate(7deg);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .portrait-frame {
+            position: absolute;
+            inset: 0;
+            border-radius: 150px 150px 18px 18px;
+            overflow: hidden;
+            border: 7px solid #fffaf2;
+            box-shadow: 0 16px 30px rgba(67, 49, 29, 0.22);
+            transform: rotate(-2deg);
+            background: #e9dfd0;
+        }
+
+        .portrait-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .portrait-caption {
+            position: relative;
+            color: #fffdf8;
+            text-align: center;
+            margin-top: 22px;
+        }
+
+        .portrait-caption .small-label {
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+
+        .portrait-caption h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.85rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-top: 4px;
+        }
+
+        .portrait-caption p {
+            font-size: 0.78rem;
+            opacity: 0.85;
+            margin-top: 5px;
+        }
+
+        .portrait-corner {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border-color: rgba(255, 255, 255, 0.8);
+            border-style: solid;
+            z-index: 2;
+        }
+
+        .portrait-corner.top-left {
+            top: 16px;
+            left: 16px;
+            border-width: 2px 0 0 2px;
+        }
+
+        .portrait-corner.bottom-right {
+            bottom: 16px;
+            right: 16px;
+            border-width: 0 2px 2px 0;
+        }
+
+        /* PERSONAL INFORMATION */
+
+        .personal-info {
+            background: #ffffff;
+            border: 1px solid #eee8dd;
+            border-radius: 23px;
+            padding: 30px;
+            box-shadow: 0 10px 35px rgba(92, 71, 45, 0.045);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .personal-info .section-heading {
+            margin-bottom: 22px;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 13px;
+        }
+
+        .profile-item {
+            background: #faf8f4;
+            border: 1px solid #f0eade;
+            border-radius: 13px;
+            padding: 15px;
+            min-width: 0;
+            transition: 0.25s ease;
+        }
+
+        .profile-item:hover {
+            border-color: #d8c3a3;
+            background: #fffdf9;
+            transform: translateY(-2px);
+        }
+
+        .profile-item.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .profile-item .label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #9b8b75;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .profile-item .label i {
+            color: #b18a5c;
+            font-size: 0.78rem;
+        }
+
+        .profile-item .value {
+            display: block;
+            color: #37362f;
+            font-weight: 700;
+            font-size: 0.92rem;
+            overflow-wrap: anywhere;
+        }
+
+        .profile-item.email-item .value {
+            font-size: 0.83rem;
+        }
+
+        /* =========================================
+           EDUCATION TIMELINE
+        ========================================= */
+
+        .education-timeline {
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .education-item {
+            position: relative;
+            display: grid;
+            grid-template-columns: 18px 75px minmax(0, 1fr);
+            gap: 17px;
+            padding-bottom: 32px;
+        }
+
+        .education-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-track {
+            position: absolute;
+            top: 12px;
+            bottom: -3px;
+            left: 7px;
+            width: 2px;
+            background: #e7dccb;
+        }
+
+        .education-item:last-child .timeline-track {
+            display: none;
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: #b18a5c;
+            border: 4px solid #f4e9d9;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+            margin-top: 8px;
+        }
+
+        .education-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            border: 1px solid #eee8dd;
+            background: #faf8f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 9px;
+            overflow: hidden;
+        }
+
+        .education-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .education-content {
+            padding: 3px 0;
+        }
+
+        .education-content .education-status {
+            display: inline-block;
+            color: #9a7547;
+            background: #f7efe3;
+            border: 1px solid #eee0ca;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 0.68rem;
+            font-weight: 800;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+
+        .education-content h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.08rem;
+            font-weight: 800;
+            color: #37372f;
+            line-height: 1.4;
+        }
+
+        .education-content p {
+            font-size: 0.88rem;
+            color: #817a6e;
+            margin-top: 5px;
+        }
+
+        /* =========================================
+           SKILLS SECTION
+        ========================================= */
+
+        .skills-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .skills-subheading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 23px;
+            padding-bottom: 13px;
+            border-bottom: 1px solid #eee8dd;
+        }
+
+        .skills-subheading i {
+            color: #a17a4f;
+            font-size: 1.1rem;
+        }
+
+        .skills-subheading h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #4a4033;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .skill-name {
+            color: #4c4a42;
+            font-size: 0.86rem;
+            font-weight: 700;
+        }
+
+        .skill-percentage {
+            color: #a17a4f;
+            font-size: 0.78rem;
+            font-weight: 800;
+        }
+
+        .skill-bar {
+            height: 9px;
+            background: #f0ece5;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            width: var(--level);
+            border-radius: 20px;
+            background: linear-gradient(90deg, #a17a4f, #d0ad7e);
+            transform-origin: left;
+            animation: growBar 1.2s ease both;
+        }
+
+        .soft-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 11px;
+            align-content: flex-start;
+        }
+
+        .soft-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            background: #faf6ef;
+            border: 1px solid #ebdfcd;
+            color: #806342;
+            border-radius: 50px;
+            font-size: 0.81rem;
+            font-weight: 700;
+            transition: 0.25s ease;
+        }
+
+        .soft-badge:hover {
+            background: #efe3d1;
+            transform: translateY(-3px);
+            border-color: #d8c1a0;
+        }
+
+        .soft-badge i {
+            font-size: 0.78rem;
+            color: #b18a5c;
+        }
+
+        /* =========================================
+           WEEKLY TIMETABLE
+        ========================================= */
+
+        .timetable-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            border: 1px solid #eee8dd;
+            border-radius: 15px;
+        }
+
+        .timetable {
+            width: 100%;
+            min-width: 680px;
+            border-collapse: collapse;
+            background: #ffffff;
+        }
+
+        .timetable th {
+            background: #796044;
+            color: #ffffff;
+            padding: 15px 13px;
+            text-align: left;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+        }
+
+        .timetable td {
+            padding: 15px 13px;
+            border-bottom: 1px solid #f0ece5;
+            color: #555248;
+            font-size: 0.82rem;
+            vertical-align: top;
+        }
+
+        .timetable tr:last-child td {
+            border-bottom: none;
+        }
+
+        .timetable td:first-child {
+            color: #9a7a53;
+            font-weight: 800;
+            white-space: nowrap;
+            background: #fcfaf7;
+        }
+
+        .class-block {
+            display: block;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border-left: 3px solid #b18a5c;
+            background: #f7f1e8;
+            margin-bottom: 7px;
+            min-width: 125px;
+        }
+
+        .class-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .class-block strong {
+            display: block;
+            color: #665038;
+            font-size: 0.78rem;
+            line-height: 1.4;
+        }
+
+        .class-block span {
+            display: block;
+            color: #96836a;
+            font-size: 0.72rem;
+            margin-top: 4px;
+        }
+
+        .class-block.tutorial {
+            background: #f1f3e9;
+            border-left-color: #8b9567;
+        }
+
+        .class-block.tutorial strong {
+            color: #5e6942;
+        }
+
+        .class-block.tutorial span {
+            color: #818a69;
+        }
+
+        .empty-cell {
+            color: #c4bdae !important;
+            text-align: center;
+        }
+
+        .timetable-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 17px;
+            color: #8b8478;
+            font-size: 0.78rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+            background: #b18a5c;
+        }
+
+        .legend-dot.tutorial-dot {
+            background: #8b9567;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .footer {
+            margin-top: 45px;
+            padding: 25px 0;
+            border-top: 1px solid #e5dccf;
+            text-align: center;
+            color: #a49a8a;
+            font-size: 0.82rem;
+        }
+
+        /* =========================================
+           ANIMATIONS
+        ========================================= */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes growBar {
+            from {
+                transform: scaleX(0);
+            }
+
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN
+        ========================================= */
+
+        @media (max-width: 1000px) {
+            .main-content {
+                padding: 45px 4%;
+            }
+
+            .profile-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .portrait-card {
+                min-height: 470px;
+            }
+
+            .portrait-stage {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 90px 25px 45px;
+            }
+
+            .skills-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .section {
+                padding: 25px 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 85px 17px 30px;
+            }
+
+            .page-header h1 {
+                font-size: 2.8rem;
+            }
+
+            .section {
+                padding: 21px 17px;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-item.full-width {
+                grid-column: auto;
+            }
+
+            .portrait-card {
+                min-height: 450px;
+                padding: 18px;
+            }
+
+            .portrait-stage {
+                height: 290px;
+            }
+
+            .education-item {
+                grid-template-columns: 16px 58px minmax(0, 1fr);
+                gap: 11px;
+            }
+
+            .education-logo {
+                width: 55px;
+                height: 55px;
+            }
+
+            .education-content h3 {
+                font-size: 0.96rem;
+            }
+
+            .section-heading h2 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- MOBILE MENU BUTTON -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <h2>Khuzairy</h2>
+        <div class="title-tag">Information Technology Student</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="index.html">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="about.html">
+                <i class="fas fa-user"></i>
+                <span>About</span>
+            </a>
+
+            <a href="biodata.html" class="active">
+                <i class="fas fa-id-card"></i>
+                <span>My Biodata</span>
+            </a>
+
+            <a href="portfolio.html">
+                <i class="fas fa-folder-open"></i>
+                <span>My Portfolio</span>
+            </a>
+
+            <a href="video.html">
+                <i class="fas fa-video"></i>
+                <span>My Video</span>
+            </a>
+
+            <a href="comments.html">
+                <i class="fas fa-comment-dots"></i>
+                <span>Your Comments</span>
+            </a>
+
+        </nav>
+
+        <div class="social-links">
+
+            <a href="https://www.linkedin.com/in/mohdkhuzairy"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <a href="https://github.com/MohdKhuzairyy"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <div class="page-container">
+
+            <!-- PAGE TITLE -->
+            <header class="page-header">
+
+                <span class="title-label">
+                    <i class="fas fa-user-pen"></i>
+                    Personal Profile
+                </span>
+
+                <h1>My Biodata</h1>
+
+                <div class="header-decoration"></div>
+
+            </header>
+
+
+            <!-- =====================================
+                 PERSONAL PROFILE - 4 / 8
+            ====================================== -->
+
+            <section class="profile-layout">
+
+                <!-- LEFT COLUMN: FORMAL PORTRAIT -->
+                <div class="portrait-card">
+
+                    <div class="portrait-corner top-left"></div>
+                    <div class="portrait-corner bottom-right"></div>
+
+                    <div class="portrait-top">
+                        <span>Personal Archive</span>
+                        <span class="portrait-number">01 / 01</span>
+                    </div>
+
+                    <div class="portrait-stage">
+
+                        <div class="portrait-frame-back"></div>
+
+                        <div class="portrait-frame">
+                            <img
+                                src="assets/images/profile/formal-photo.jpg"
+                                alt="Formal portrait of Mohammad Khuzairy"
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="portrait-caption">
+
+                        <span class="small-label">Information Technology</span>
+
+                        <h2>Mohammad Khuzairy</h2>
+
+                        <p>Universiti Malaysia Sabah</p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT COLUMN: PERSONAL INFORMATION -->
+                <div class="personal-info">
+
+                    <div class="section-heading">
+
+                        <div class="section-icon">
+                            <i class="fas fa-address-card"></i>
+                        </div>
+
+                        <div>
+                            <h2>Personal Information</h2>
+                            <p>A closer look at my personal details</p>
+                        </div>
+
+                    </div>
+
+                    <div class="profile-grid">
+
+                        <div class="profile-item full-width">
+
+                            <span class="label">
+                                <i class="fas fa-user"></i>
+                                Full Name
+                            </span>
+
+                            <span class="value">
+                                Mohammad Khuzairy bin Binjamin
+                            </span>
+
+                        </div>
+
+                        <div class="profile-item">
+
+                            <span class="label">
+                                <i class="fas fa-signature"></i>
+                                Nickname
+                            </span>
+
+                            <span class="value">Harry</span>
+
+                        </div>
+
+                        <div class="profile-item">
+
+                            <span class="label">
+                                <i class="fas fa-calendar"></i>
+                                Date of Birth
+                            </span>
+
+                            <span class="value">25 August 2005</span>
+
+                        </div>
+
+                        <div class="profile-item">
+
+                            <span class="label">
+                                <i class="fas fa-location-dot"></i>
+                                Hometown
+                            </span>
+
+                            <span class="value">Kota Kinabalu, Sabah</span>
+
+                        </div>
+
+                        <div class="profile-item">
+
+                            <span class="label">
+                                <i class="fas fa-building-columns"></i>
+                                Faculty
+                            </span>
+
+                            <span class="value">Faculty of Computing and Informatics (FKI)</span>
+
+                        </div>
+
+                        <div class="profile-item full-width">
+
+                            <span class="label">
+                                <i class="fas fa-graduation-cap"></i>
+                                Education
+                            </span>
+
+                            <span class="value">
+                                Bachelor of Information Technology with Honours
+                                (Multimedia Technology)
+                            </span>
+
+                        </div>
+
+                        <div class="profile-item full-width email-item">
+
+                            <span class="label">
+                                <i class="fas fa-envelope"></i>
+                                University Email
+                            </span>
+
+                            <span class="value">
+                                mohammad_khuzairy_bi24110396@iluv.ums.edu.my
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 EDUCATION BACKGROUND
+            ====================================== -->
+
+            <section class="section">
+
+                <div class="section-heading">
+
+                    <div class="section-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+
+                    <div>
+                        <h2>Education Background</h2>
+                        <p>My academic journey and educational milestones</p>
+                    </div>
+
+                </div>
+
+
+                <div class="education-timeline">
+
+                    <!-- UNIVERSITY -->
+                    <div class="education-item">
+
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-track"></div>
+
+                        <div class="education-logo">
+                            <img
+                                src="assets/images/education/ums-logo.png"
+                                alt="Universiti Malaysia Sabah Logo"
+                            >
+                        </div>
+
+                        <div class="education-content">
+
+                            <span class="education-status">Currently Pursuing</span>
+
+                            <h3>Universiti Malaysia Sabah (UMS)</h3>
+
+                            <p>
+                                Bachelor of Information Technology with Honours
+                                (Multimedia Technology)
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FOUNDATION -->
+                    <div class="education-item">
+
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-track"></div>
+
+                        <div class="education-logo">
+                            <img
+                                src="assets/images/education/ums-logo.png"
+                                alt="Universiti Malaysia Sabah Logo"
+                            >
+                        </div>
+
+                        <div class="education-content">
+
+                            <span class="education-status">Foundation</span>
+
+                            <h3>Universiti Malaysia Sabah (UMS)</h3>
+
+                            <p>
+                                Foundation in Information Technology
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SECONDARY SCHOOL -->
+                    <div class="education-item">
+
+                        <div class="timeline-dot"></div>
+
+                        <div class="education-logo">
+                            <img
+                                src="assets/images/education/vi-logo.png"
+                                alt="Victoria Institution Logo"
+                            >
+                        </div>
+
+                        <div class="education-content">
+
+                            <span class="education-status">Secondary Education</span>
+
+                            <h3>Victoria Institution</h3>
+
+                            <p>
+                                Computer Science
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 TOOLS AND SKILLS
+            ====================================== -->
+
+            <section class="section">
+
+                <div class="section-heading">
+
+                    <div class="section-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+
+                    <div>
+                        <h2>Tools & Skills</h2>
+                        <p>Technical proficiency and personal strengths</p>
+                    </div>
+
+                </div>
+
+
+                <div class="skills-layout">
+
+                    <!-- HARD SKILLS -->
+                    <div class="hard-skills">
+
+                        <div class="skills-subheading">
+
+                            <i class="fas fa-code"></i>
+                            <h3>Hard Skills</h3>
+
+                        </div>
+
+
+                        <div class="skill-item">
+
+                            <div class="skill-info">
+                                <span class="skill-name">HTML, CSS & JavaScript</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
+
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--level: 85%;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="skill-item">
+
+                            <div class="skill-info">
+                                <span class="skill-name">React, Next.js & TailwindCSS</span>
+                                <span class="skill-percentage">65%</span>
+                            </div>
+
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--level: 65%;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="skill-item">
+
+                            <div class="skill-info">
+                                <span class="skill-name">PHP, C#, Python & SQL</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
+
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--level: 75%;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="skill-item">
+
+                            <div class="skill-info">
+                                <span class="skill-name">Google Cloud Platform</span>
+                                <span class="skill-percentage">55%</span>
+                            </div>
+
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--level: 55%;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="skill-item">
+
+                            <div class="skill-info">
+                                <span class="skill-name">Adobe Photoshop & Premiere Pro</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
+
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--level: 80%;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="skill-item">
+
+                            <div class="skill-info">
+                                <span class="skill-name">Cybersecurity Essentials</span>
+                                <span class="skill-percentage">65%</span>
+                            </div>
+
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="--level: 65%;"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SOFT SKILLS -->
+                    <div class="soft-skills-container">
+
+                        <div class="skills-subheading">
+
+                            <i class="fas fa-people-group"></i>
+                            <h3>Soft Skills</h3>
+
+                        </div>
+
+                        <div class="soft-skills">
+
+                            <span class="soft-badge">
+                                <i class="fas fa-users"></i>
+                                Leadership
+                            </span>
+
+                            <span class="soft-badge">
+                                <i class="fas fa-comments"></i>
+                                Communication
+                            </span>
+
+                            <span class="soft-badge">
+                                <i class="fas fa-calendar-check"></i>
+                                Event Management
+                            </span>
+
+                            <span class="soft-badge">
+                                <i class="fas fa-people-arrows"></i>
+                                Teamwork
+                            </span>
+
+                            <span class="soft-badge">
+                                <i class="fas fa-list-check"></i>
+                                Project Management
+                            </span>
+
+                            <span class="soft-badge">
+                                <i class="fas fa-lightbulb"></i>
+                                Problem Solving
+                            </span>
+
+                            <span class="soft-badge">
+                                <i class="fas fa-microphone"></i>
+                                Public Speaking
+                            </span>
+
+                            <span class="soft-badge">
+                                <i class="fas fa-clock"></i>
+                                Time Management
+                            </span>
+
+                            <span class="soft-badge">
+                                <i class="fas fa-arrows-rotate"></i>
+                                Adaptability
+                            </span>
+
+                            <span class="soft-badge">
+                                <i class="fas fa-handshake"></i>
+                                Collaboration
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 WEEKLY TIMETABLE
+            ====================================== -->
+
+            <section class="section">
+
+                <div class="section-heading">
+
+                    <div class="section-icon">
+                        <i class="fas fa-calendar-days"></i>
+                    </div>
+
+                    <div>
+                        <h2>Weekly Timetable</h2>
+                        <p>My current university lecture and tutorial schedule</p>
+                    </div>
+
+                </div>
+
+
+                <div class="timetable-wrapper">
+
+                    <table class="timetable">
+
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Time</th>
+                                <th>Course</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <!-- MONDAY -->
+                            <tr>
+                                <td>Monday</td>
+                                <td>8:00 AM – 10:00 AM</td>
+                                <td>
+                                    <span class="class-block">
+                                        <strong>Multimedia Web Programming</strong>
+                                        <span>IM22503</span>
+                                    </span>
+                                </td>
+                                <td>Lecture</td>
+                            </tr>
+
+                            <tr>
+                                <td>Monday</td>
+                                <td>2:00 PM – 4:00 PM</td>
+                                <td>
+                                    <span class="class-block tutorial">
+                                        <strong>Multimedia Web Programming</strong>
+                                        <span>IM22503</span>
+                                    </span>
+                                </td>
+                                <td>Tutorial</td>
+                            </tr>
+
+
+                            <!-- TUESDAY -->
+                            <tr>
+                                <td>Tuesday</td>
+                                <td>11:00 AM – 1:00 PM</td>
+                                <td>
+                                    <span class="class-block tutorial">
+                                        <strong>Augmented Reality</strong>
+                                        <span>IT32603</span>
+                                    </span>
+                                </td>
+                                <td>Tutorial</td>
+                            </tr>
+
+
+                            <!-- WEDNESDAY -->
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>8:00 AM – 10:00 AM</td>
+                                <td>
+                                    <span class="class-block">
+                                        <strong>Computer Graphic</strong>
+                                        <span>IM32303</span>
+                                    </span>
+                                </td>
+                                <td>Lecture</td>
+                            </tr>
+
+
+                            <!-- THURSDAY -->
+                            <tr>
+                                <td>Thursday</td>
+                                <td>8:00 AM – 10:00 AM</td>
+                                <td>
+                                    <span class="class-block">
+                                        <strong>Digital Workforce</strong>
+                                        <span>IP01903</span>
+                                    </span>
+                                </td>
+                                <td>Lecture</td>
+                            </tr>
+
+                            <tr>
+                                <td>Thursday</td>
+                                <td>11:00 AM – 12:30 PM</td>
+                                <td>
+                                    <span class="class-block tutorial">
+                                        <strong>Computer Graphic</strong>
+                                        <span>IM32303</span>
+                                    </span>
+                                </td>
+                                <td>Tutorial</td>
+                            </tr>
+
+
+                            <!-- FRIDAY -->
+                            <tr>
+                                <td>Friday</td>
+                                <td>2:00 PM – 4:00 PM</td>
+                                <td>
+                                    <span class="class-block">
+                                        <strong>Cybersecurity</strong>
+                                        <span>IT32503</span>
+                                    </span>
+                                </td>
+                                <td>Lecture</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="timetable-legend">
+
+                    <div class="legend-item">
+                        <span class="legend-dot"></span>
+                        Lecture
+                    </div>
+
+                    <div class="legend-item">
+                        <span class="legend-dot tutorial-dot"></span>
+                        Tutorial
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="footer">
+
+                <p>
+                    &copy; <span id="year"></span>
+                    Mohammad Khuzairy. All Rights Reserved.
+                </p>
+
+            </footer>
+
+        </div>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // MOBILE SIDEBAR
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.getElementById("sidebar");
+
+        menuToggle.addEventListener("click", function () {
+
+            sidebar.classList.toggle("open");
+
+            const icon = menuToggle.querySelector("i");
+
+            if (sidebar.classList.contains("open")) {
+
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-times");
+
+            } else {
+
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+
+            }
+
+        });
+
+
+        // CLOSE SIDEBAR AFTER CLICKING A LINK
+        document.querySelectorAll(".sidebar-nav a").forEach(link => {
+
+            link.addEventListener("click", function () {
+
+                sidebar.classList.remove("open");
+
+                const icon = menuToggle.querySelector("i");
+
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+
+            });
+
+        });
+
+
+        // AUTOMATIC FOOTER YEAR
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+    </script>
+
+</body>
+</html>

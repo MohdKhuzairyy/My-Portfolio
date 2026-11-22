@@ -1,0 +1,1467 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParkMana | Project Details</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #f5f7fb;
+            color: #252b3a;
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           SIDEBAR - PRESERVED DESIGN
+        ========================================= */
+
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            color: #f0f0f5;
+            padding: 2rem 1.2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+            z-index: 100;
+            overflow-y: auto;
+            transition: all 0.2s;
+        }
+
+        .sidebar h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.3rem;
+            background: linear-gradient(to right, #e0e7ff, #b1c9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .sidebar .title-tag {
+            color: #aab8e0;
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 1rem;
+            width: 100%;
+        }
+
+        .sidebar-nav {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ccd6f0;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 14px;
+            font-weight: 450;
+            transition: all 0.2s ease;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .sidebar-nav a i {
+            width: 22px;
+            font-size: 1.1rem;
+            color: #7d93c7;
+            transition: 0.2s;
+        }
+
+        .sidebar-nav a:hover {
+            background: rgba(255, 255, 255, 0.07);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.05);
+            transform: translateX(4px);
+        }
+
+        .sidebar-nav a:hover i {
+            color: #b7cdff;
+        }
+
+        .sidebar-nav a.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border-left: 3px solid #6d8cff;
+        }
+
+        .sidebar .social-links {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            display: flex;
+            gap: 1.2rem;
+            font-size: 1.2rem;
+            color: #859bc9;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .sidebar .social-links a {
+            color: #9aafdb;
+            transition: 0.2s;
+        }
+
+        .sidebar .social-links a:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 120;
+            background: #1a1a2e;
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* =========================================
+           MAIN CONTENT
+        ========================================= */
+
+        .main-content {
+            margin-left: 240px;
+            min-height: 100vh;
+            padding: 55px 6%;
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #8992a5;
+            font-size: 0.88rem;
+            margin-bottom: 35px;
+        }
+
+        .breadcrumb a {
+            color: #64748b;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: #0d9488;
+        }
+
+        .breadcrumb i {
+            font-size: 0.7rem;
+        }
+
+        /* =========================================
+           PROJECT HEADER
+        ========================================= */
+
+        .project-header {
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #e9edf4;
+            border-radius: 25px;
+            padding: 42px;
+            margin-bottom: 55px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(25, 42, 70, 0.045);
+            animation: fadeUp 0.7s ease both;
+        }
+
+        .project-header::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            right: -100px;
+            top: -150px;
+            background: radial-gradient(circle, rgba(20, 184, 166, 0.13), transparent 70%);
+            pointer-events: none;
+        }
+
+        .project-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 13px;
+            background: #e8f8f2;
+            color: #15803d;
+            border: 1px solid #c6f0da;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+            margin-bottom: 17px;
+        }
+
+        .project-label i {
+            font-size: 0.75rem;
+        }
+
+        .project-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(3rem, 7vw, 5rem);
+            font-weight: 900;
+            letter-spacing: -3px;
+            line-height: 1.05;
+            background: linear-gradient(115deg, #064e3b 5%, #059669 48%, #2dd4bf 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .project-subtitle {
+            color: #687386;
+            font-size: 1.08rem;
+            max-width: 720px;
+            margin-bottom: 28px;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            background: #f7f9fc;
+            border: 1px solid #edf0f5;
+            padding: 10px 15px;
+            border-radius: 12px;
+            color: #596579;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .meta-item i {
+            color: #0d9488;
+        }
+
+        .status-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 12px;
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        .status-box i {
+            font-size: 0.8rem;
+        }
+
+        /* =========================================
+           SECTION HEADINGS
+        ========================================= */
+
+        .section-heading {
+            margin-bottom: 25px;
+        }
+
+        .section-heading .eyebrow {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+
+        .section-heading h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #202a3b;
+            letter-spacing: -0.7px;
+        }
+
+        .section-heading p {
+            color: #7b8495;
+            font-size: 0.95rem;
+            margin-top: 7px;
+        }
+
+        /* =========================================
+           PROJECT GALLERY
+        ========================================= */
+
+        .gallery-section {
+            margin-bottom: 65px;
+            animation: fadeUp 0.7s ease both;
+        }
+
+        .gallery-panel {
+            background: #ffffff;
+            border-radius: 23px;
+            padding: 30px;
+            border: 1px solid #e8edf2;
+            box-shadow: 0 10px 30px rgba(25, 42, 70, 0.035);
+        }
+
+        .gallery-section.user-gallery .eyebrow {
+            color: #16a34a;
+        }
+
+        .gallery-section.admin-gallery .eyebrow {
+            color: #dc6b75;
+        }
+
+        .gallery-section.user-gallery .section-heading h2 {
+            color: #166534;
+        }
+
+        .gallery-section.admin-gallery .section-heading h2 {
+            color: #a94452;
+        }
+
+        .gallery-section.user-gallery .gallery-panel {
+            border-top: 5px solid #22c55e;
+            background: linear-gradient(180deg, #f3fbf5 0%, #ffffff 170px);
+        }
+
+        .gallery-section.admin-gallery .gallery-panel {
+            border-top: 5px solid #e99aa3;
+            background: linear-gradient(180deg, #fff6f6 0%, #ffffff 170px);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 23px;
+        }
+
+        .gallery-item {
+            background: #ffffff;
+            border: 1px solid #e9edf2;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 30px rgba(30, 50, 70, 0.11);
+        }
+
+        .gallery-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            display: block;
+            object-fit: cover;
+            object-position: top;
+            background: #eef2f7;
+            cursor: zoom-in;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.025);
+        }
+
+        .gallery-image-wrap {
+            overflow: hidden;
+            position: relative;
+            background: #eef2f7;
+        }
+
+        .zoom-hint {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 11px;
+            border-radius: 8px;
+            background: rgba(20, 30, 45, 0.78);
+            color: #ffffff;
+            font-size: 0.72rem;
+            opacity: 0;
+            transform: translateY(5px);
+            transition: 0.25s ease;
+            pointer-events: none;
+        }
+
+        .gallery-item:hover .zoom-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-caption {
+            padding: 16px 18px;
+        }
+
+        .gallery-caption h3 {
+            font-size: 0.98rem;
+            font-weight: 800;
+            color: #303b4e;
+            margin-bottom: 3px;
+        }
+
+        .gallery-caption p {
+            font-size: 0.8rem;
+            color: #8a93a3;
+        }
+
+        .gallery-section.user-gallery .gallery-caption {
+            border-bottom: 3px solid #dcfce7;
+        }
+
+        .gallery-section.admin-gallery .gallery-caption {
+            border-bottom: 3px solid #ffe4e6;
+        }
+
+        /* =========================================
+           PROJECT OVERVIEW
+        ========================================= */
+
+        .content-section {
+            margin-bottom: 55px;
+        }
+
+        .overview-card {
+            background: #ffffff;
+            border: 1px solid #e9edf4;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(25, 42, 70, 0.035);
+        }
+
+        .overview-card p {
+            color: #657084;
+            font-size: 0.97rem;
+            margin-bottom: 15px;
+        }
+
+        .overview-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .overview-highlight {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            padding: 18px;
+            margin-top: 22px;
+            background: #effaf6;
+            border: 1px solid #d5f2e5;
+            border-radius: 14px;
+        }
+
+        .overview-highlight i {
+            color: #0d9488;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        .overview-highlight p {
+            margin: 0;
+            color: #39735e;
+            font-size: 0.9rem;
+        }
+
+        /* =========================================
+           PROJECT INFORMATION
+        ========================================= */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            background: #ffffff;
+            border: 1px solid #e9edf4;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(25, 42, 70, 0.035);
+        }
+
+        .info-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            color: #263449;
+            margin-bottom: 18px;
+        }
+
+        .info-card h3 i {
+            color: #0d9488;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .tech-tags span {
+            padding: 8px 12px;
+            background: #effaf7;
+            border: 1px solid #d5f1e8;
+            color: #16745b;
+            border-radius: 9px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #697589;
+            font-size: 0.9rem;
+            margin-bottom: 11px;
+        }
+
+        .info-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-list i {
+            color: #16a34a;
+            font-size: 0.8rem;
+            margin-top: 6px;
+        }
+
+        /* =========================================
+           ACKNOWLEDGEMENT
+        ========================================= */
+
+        .acknowledgement {
+            background: linear-gradient(120deg, #1a1a2e, #203b58);
+            border-radius: 20px;
+            padding: 30px;
+            color: #ffffff;
+            margin-bottom: 45px;
+        }
+
+        .acknowledgement h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .acknowledgement h2 i {
+            color: #7dd3c7;
+            margin-right: 8px;
+        }
+
+        .acknowledgement p {
+            color: #c4d0e2;
+            font-size: 0.92rem;
+        }
+
+        /* =========================================
+           BACK BUTTON AND FOOTER
+        ========================================= */
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 20px;
+            background: #1a1a2e;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            transition: 0.25s ease;
+        }
+
+        .back-button:hover {
+            background: #0d9488;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(13, 148, 136, 0.2);
+        }
+
+        .footer {
+            margin-top: 65px;
+            padding-top: 25px;
+            border-top: 1px solid #e5eaf0;
+            text-align: center;
+            color: #9aa3b2;
+            font-size: 0.82rem;
+        }
+
+        /* =========================================
+           IMAGE LIGHTBOX
+        ========================================= */
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: rgba(9, 14, 25, 0.94);
+            align-items: center;
+            justify-content: center;
+            padding: 45px;
+            backdrop-filter: blur(8px);
+        }
+
+        .lightbox.open {
+            display: flex;
+            animation: lightboxFade 0.2s ease;
+        }
+
+        .lightbox-content {
+            max-width: 1100px;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 78vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 15px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        .lightbox-caption {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 22px;
+            right: 28px;
+            width: 45px;
+            height: 45px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .lightbox-close:hover {
+            background: #ffffff;
+            color: #1a1a2e;
+        }
+
+        @keyframes lightboxFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* =========================================
+           ANIMATIONS
+        ========================================= */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(22px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN
+        ========================================= */
+
+        @media (max-width: 1000px) {
+            .main-content {
+                padding: 45px 4%;
+            }
+
+            .project-header {
+                padding: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 90px 25px 45px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-title {
+                letter-spacing: -2px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 85px 17px 35px;
+            }
+
+            .project-header {
+                padding: 25px 20px;
+                border-radius: 19px;
+            }
+
+            .project-title {
+                font-size: 3rem;
+            }
+
+            .project-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .gallery-panel {
+                padding: 18px;
+            }
+
+            .section-heading h2 {
+                font-size: 1.65rem;
+            }
+
+            .meta-item,
+            .status-box {
+                font-size: 0.78rem;
+            }
+
+            .lightbox {
+                padding: 18px;
+            }
+
+            .lightbox-close {
+                top: 12px;
+                right: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MOBILE MENU BUTTON -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <h2>Khuzairy</h2>
+        <div class="title-tag">Information Technology Student</div>
+
+        <nav class="sidebar-nav">
+            <a href="../index.html">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="../about.html">
+                <i class="fas fa-user"></i>
+                <span>About</span>
+            </a>
+
+            <a href="../biodata.html">
+                <i class="fas fa-id-card"></i>
+                <span>My Biodata</span>
+            </a>
+
+            <a href="../portfolio.html" class="active">
+                <i class="fas fa-folder-open"></i>
+                <span>My Portfolio</span>
+            </a>
+
+            <a href="../video.html">
+                <i class="fas fa-video"></i>
+                <span>My Video</span>
+            </a>
+
+            <a href="../comments.html">
+                <i class="fas fa-comment-dots"></i>
+                <span>Your Comments</span>
+            </a>
+        </nav>
+
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/mohdkhuzairy"
+               target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <a href="https://github.com/MohdKhuzairyy"
+               target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <div class="page-container">
+
+            <!-- BREADCRUMB -->
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="../portfolio.html">My Portfolio</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>ParkMana</span>
+            </div>
+
+            <!-- PROJECT HEADER -->
+            <header class="project-header">
+
+                <span class="project-label">
+                    <i class="fas fa-check-circle"></i>
+                    Completed Project
+                </span>
+
+                <h1 class="project-title">ParkMana.</h1>
+
+                <p class="project-subtitle">
+                    A Car Parking Management System developed to provide
+                    a more organised way of managing parking spaces,
+                    vehicle information, parking reservations and payments.
+                </p>
+
+                <div class="project-meta">
+
+                    <div class="meta-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2024</span>
+                    </div>
+
+                    <div class="meta-item">
+                        <i class="fas fa-users"></i>
+                        <span>2 Team Members</span>
+                    </div>
+
+                    <div class="meta-item">
+                        <i class="fas fa-laptop-code"></i>
+                        <span>Web Application</span>
+                    </div>
+
+                    <div class="status-box">
+                        <i class="fas fa-circle-check"></i>
+                        Project Completed
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- =====================================
+                 PROJECT GALLERY
+            ====================================== -->
+
+            <!-- USER GALLERY -->
+            <section class="gallery-section user-gallery">
+
+                <div class="section-heading">
+                    <span class="eyebrow">01 / User Interface</span>
+                    <h2>User Side</h2>
+                    <p>
+                        Screenshots of the pages and interfaces designed
+                        for users of the ParkMana system.
+                    </p>
+                </div>
+
+                <div class="gallery-panel">
+
+                    <div class="gallery-grid">
+
+                        <article class="gallery-item">
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="../assets/images/parkmana/parkmana-user-mainpage.jpeg"
+                                    alt="ParkMana User Main Page"
+                                    class="gallery-image"
+                                    data-caption="User Main Page">
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i> Click to zoom
+                                </span>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>Main Page</h3>
+                                <p>ParkMana landing page for users</p>
+                            </div>
+                        </article>
+
+                        <article class="gallery-item">
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="../assets/images/parkmana/parkmana-user-loginpage.jpeg"
+                                    alt="ParkMana User Login Page"
+                                    class="gallery-image"
+                                    data-caption="User Login Page">
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i> Click to zoom
+                                </span>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>Login Page</h3>
+                                <p>User authentication interface</p>
+                            </div>
+                        </article>
+
+                        <article class="gallery-item">
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="../assets/images/parkmana/parkmana-user-registration.jpeg"
+                                    alt="ParkMana Registration Form"
+                                    class="gallery-image"
+                                    data-caption="Registration Form Page">
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i> Click to zoom
+                                </span>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>Registration Form</h3>
+                                <p>New user registration interface</p>
+                            </div>
+                        </article>
+
+                        <article class="gallery-item">
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="../assets/images/parkmana/parkmana-user-after-login.jpeg"
+                                    alt="ParkMana After Login Page"
+                                    class="gallery-image"
+                                    data-caption="After Login Page">
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i> Click to zoom
+                                </span>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>After Login Page</h3>
+                                <p>Main interface after successful login</p>
+                            </div>
+                        </article>
+
+                        <article class="gallery-item">
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="../assets/images/parkmana/parkmana-user-parking-slots.jpeg"
+                                    alt="ParkMana Car Parking Slots Page"
+                                    class="gallery-image"
+                                    data-caption="Car Parking Slot Page">
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i> Click to zoom
+                                </span>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>Car Parking Slots</h3>
+                                <p>Parking slot selection interface</p>
+                            </div>
+                        </article>
+
+                        <article class="gallery-item">
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="../assets/images/parkmana/parkmana-user-add-car.jpeg"
+                                    alt="ParkMana Adding Car Page"
+                                    class="gallery-image"
+                                    data-caption="Adding Car Page">
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i> Click to zoom
+                                </span>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>Adding Car Page</h3>
+                                <p>Vehicle information management interface</p>
+                            </div>
+                        </article>
+
+                        <article class="gallery-item">
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="../assets/images/parkmana/parkmana-user-receipt-payment.jpeg"
+                                    alt="ParkMana Receipt and Payment Page"
+                                    class="gallery-image"
+                                    data-caption="Receipt and Payment Page">
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i> Click to zoom
+                                </span>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>Receipt and Payment</h3>
+                                <p>Payment and receipt interface</p>
+                            </div>
+                        </article>
+
+                        <article class="gallery-item">
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="../assets/images/parkmana/parkmana-user-history.jpeg"
+                                    alt="ParkMana History Page"
+                                    class="gallery-image"
+                                    data-caption="History Page">
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i> Click to zoom
+                                </span>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>History Page</h3>
+                                <p>User parking and transaction history</p>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ADMIN GALLERY -->
+            <section class="gallery-section admin-gallery">
+
+                <div class="section-heading">
+                    <span class="eyebrow">02 / Administration Interface</span>
+                    <h2>Admin Side</h2>
+                    <p>
+                        Screenshots of the administrative interfaces
+                        designed to manage users, parking slots and system statistics.
+                    </p>
+                </div>
+
+                <div class="gallery-panel">
+
+                    <div class="gallery-grid">
+
+                        <article class="gallery-item">
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="../assets/images/parkmana/parkmana-admin-mainpage.jpeg"
+                                    alt="ParkMana Admin Main Page"
+                                    class="gallery-image"
+                                    data-caption="Admin Main Page">
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i> Click to zoom
+                                </span>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>Admin Main Page</h3>
+                                <p>Main administrative dashboard</p>
+                            </div>
+                        </article>
+
+                        <article class="gallery-item">
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="../assets/images/parkmana/parkmana-admin-slots-update.jpeg"
+                                    alt="ParkMana Admin Slots Update Page"
+                                    class="gallery-image"
+                                    data-caption="Slots Update Page">
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i> Click to zoom
+                                </span>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>Slots Update Page</h3>
+                                <p>Parking slot management interface</p>
+                            </div>
+                        </article>
+
+                        <article class="gallery-item">
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="../assets/images/parkmana/parkmana-admin-user-list.jpeg"
+                                    alt="ParkMana Admin User Data List"
+                                    class="gallery-image"
+                                    data-caption="User Data List Page">
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i> Click to zoom
+                                </span>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>User's Data List</h3>
+                                <p>Registered user information management</p>
+                            </div>
+                        </article>
+
+                        <article class="gallery-item">
+                            <div class="gallery-image-wrap">
+                                <img
+                                    src="../assets/images/parkmana/parkmana-admin-statistics.jpeg"
+                                    alt="ParkMana Admin Statistics Page"
+                                    class="gallery-image"
+                                    data-caption="Statistics Page">
+                                <span class="zoom-hint">
+                                    <i class="fas fa-search-plus"></i> Click to zoom
+                                </span>
+                            </div>
+                            <div class="gallery-caption">
+                                <h3>Statistics Page</h3>
+                                <p>System statistics and information overview</p>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- =====================================
+                 PROJECT OVERVIEW
+            ====================================== -->
+
+            <section class="content-section">
+
+                <div class="section-heading">
+                    <span class="eyebrow">03 / About the Project</span>
+                    <h2>Project Overview</h2>
+                    <p>A brief introduction to the development of ParkMana.</p>
+                </div>
+
+                <div class="overview-card">
+
+                    <p>
+                        ParkMana is a car parking management system developed
+                        to provide a more organised approach to parking space
+                        management. The system focuses on simplifying the
+                        process of managing parking slots, vehicle information
+                        and user parking activities.
+                    </p>
+
+                    <p>
+                        The application includes separate interfaces for
+                        general users and administrators. Users can interact
+                        with the system through registration, login, parking
+                        slot selection, vehicle management, payment and
+                        parking history pages.
+                    </p>
+
+                    <p>
+                        The administrative interface provides tools for
+                        managing parking slots, viewing registered user
+                        information and accessing system statistics.
+                    </p>
+
+                    <div class="overview-highlight">
+                        <i class="fas fa-lightbulb"></i>
+                        <p>
+                            The project provided practical experience in
+                            developing a web-based management system and
+                            understanding how different user roles interact
+                            with a database-driven application.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- =====================================
+                 PROJECT INFORMATION
+            ====================================== -->
+
+            <section class="content-section">
+
+                <div class="section-heading">
+                    <span class="eyebrow">04 / Development Details</span>
+                    <h2>Project Information</h2>
+                </div>
+
+                <div class="info-grid">
+
+                    <div class="info-card">
+
+                        <h3>
+                            <i class="fas fa-code"></i>
+                            Tools and Technologies
+                        </h3>
+
+                        <div class="tech-tags">
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>JavaScript</span>
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>XAMPP</span>
+                            <span>IoT Sensors</span>
+                            <span>Payment Gateway</span>
+                        </div>
+
+                    </div>
+
+                    <div class="info-card">
+
+                        <h3>
+                            <i class="fas fa-bullseye"></i>
+                            Project Objectives
+                        </h3>
+
+                        <ul class="info-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Provide an organised parking management interface.
+                            </li>
+
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Allow users to manage their vehicle information.
+                            </li>
+
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Support parking slot selection and payment processes.
+                            </li>
+
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                Provide administrators with parking and user management tools.
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- =====================================
+                 ACKNOWLEDGEMENT
+            ====================================== -->
+
+            <section class="acknowledgement">
+
+                <h2>
+                    <i class="fas fa-award"></i>
+                    Acknowledgement
+                </h2>
+
+                <p>
+                    Special appreciation to our project supervisor,
+                    Mr Jonathan Likoh, for his guidance and support
+                    throughout the development of ParkMana.
+                    Appreciation is also extended to my teammate,
+                    Amir Amjad, for the collaboration and contributions
+                    towards completing this project.
+                </p>
+
+            </section>
+
+            <!-- BACK BUTTON -->
+            <a href="../portfolio.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to My Portfolio
+            </a>
+
+            <!-- FOOTER -->
+            <footer class="footer">
+                <p>
+                    &copy; <span id="year"></span>
+                    Mohammad Khuzairy. All Rights Reserved.
+                </p>
+            </footer>
+
+        </div>
+
+    </main>
+
+    <!-- =====================================
+         IMAGE LIGHTBOX
+    ====================================== -->
+
+    <div class="lightbox" id="lightbox" role="dialog"
+         aria-modal="true" aria-label="Image preview">
+
+        <button class="lightbox-close" id="lightboxClose"
+                aria-label="Close image preview">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImage">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // MOBILE SIDEBAR
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.getElementById("sidebar");
+
+        menuToggle.addEventListener("click", function () {
+
+            sidebar.classList.toggle("open");
+
+            const icon = menuToggle.querySelector("i");
+
+            if (sidebar.classList.contains("open")) {
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-times");
+            } else {
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+            }
+
+        });
+
+        document.querySelectorAll(".sidebar-nav a").forEach(link => {
+
+            link.addEventListener("click", function () {
+
+                sidebar.classList.remove("open");
+
+                const icon = menuToggle.querySelector("i");
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+
+            });
+
+        });
+
+
+        // UPDATE FOOTER YEAR
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        // IMAGE LIGHTBOX
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImage = document.getElementById("lightboxImage");
+        const lightboxCaption = document.getElementById("lightboxCaption");
+        const lightboxClose = document.getElementById("lightboxClose");
+
+        document.querySelectorAll(".gallery-image").forEach(image => {
+
+            image.addEventListener("click", function () {
+
+                lightboxImage.src = this.src;
+                lightboxImage.alt = this.alt;
+
+                lightboxCaption.textContent =
+                    this.dataset.caption || this.alt;
+
+                lightbox.classList.add("open");
+                document.body.style.overflow = "hidden";
+
+                lightboxClose.focus();
+
+            });
+
+        });
+
+
+        function closeLightbox() {
+
+            lightbox.classList.remove("open");
+            document.body.style.overflow = "";
+
+            lightboxImage.src = "";
+
+        }
+
+        lightboxClose.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", function (event) {
+
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+
+        });
+
+        document.addEventListener("keydown", function (event) {
+
+            if (event.key === "Escape" && lightbox.classList.contains("open")) {
+                closeLightbox();
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

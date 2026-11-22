@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landslide Management System | Khuzairy</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f6f8fc;
+            color: #1e1e2f;
+            line-height: 1.6;
+        }
+
+        /* SIDEBAR - ORIGINAL BLUE DESIGN */
+
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            color: #f0f0f5;
+            padding: 2rem 1.2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+            z-index: 10;
+            overflow-y: auto;
+            transition: all 0.2s;
+        }
+
+        .sidebar h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.3rem;
+            background: linear-gradient(to right, #e0e7ff, #b1c9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .sidebar .title-tag {
+            color: #aab8e0;
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 1rem;
+            width: 100%;
+        }
+
+        .sidebar-nav {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ccd6f0;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 14px;
+            font-weight: 450;
+            transition: all 0.2s ease;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .sidebar-nav a i {
+            width: 22px;
+            font-size: 1.1rem;
+            color: #7d93c7;
+            transition: 0.2s;
+        }
+
+        .sidebar-nav a:hover {
+            background: rgba(255, 255, 255, 0.07);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.05);
+            transform: translateX(4px);
+        }
+
+        .sidebar-nav a:hover i {
+            color: #b7cdff;
+        }
+
+        .sidebar-nav a.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border-left: 3px solid #6d8cff;
+        }
+
+        .sidebar .social-links {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            display: flex;
+            gap: 1.2rem;
+            font-size: 1.2rem;
+            color: #859bc9;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .sidebar .social-links a {
+            color: #9aafdb;
+            transition: 0.2s;
+        }
+
+        .sidebar .social-links a:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* MOBILE MENU */
+
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 20;
+            background: #1a1a2e;
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* MAIN CONTENT */
+
+        .main-content {
+            margin-left: 240px;
+            min-height: 100vh;
+            padding: 55px 7%;
+        }
+
+        .page-container {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .breadcrumb {
+            color: #7b879e;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .breadcrumb a {
+            color: #3b5cbf;
+            text-decoration: none;
+        }
+
+        .project-header {
+            margin-bottom: 35px;
+            animation: fadeInUp 0.7s ease;
+        }
+
+        .project-label {
+            display: inline-block;
+            background: #e8edff;
+            color: #3b5cbf;
+            padding: 7px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .project-header h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: #1a1a2e;
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+            margin-bottom: 15px;
+        }
+
+        .project-header p {
+            max-width: 750px;
+            color: #64718a;
+            font-size: 1.05rem;
+        }
+
+        .project-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid #e8ecf4;
+            box-shadow: 0 5px 20px rgba(20, 35, 70, 0.04);
+        }
+
+        .info-card i {
+            color: #3b5cbf;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .info-card h4 {
+            color: #8994a8;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .info-card p {
+            color: #1a1a2e;
+            font-weight: 600;
+        }
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #e8ecf4;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(20, 35, 70, 0.04);
+        }
+
+        .content-section h2 {
+            color: #1a1a2e;
+            font-size: 1.35rem;
+            margin-bottom: 18px;
+        }
+
+        .content-section h2 i {
+            color: #3b5cbf;
+            margin-right: 10px;
+        }
+
+        .content-section p {
+            color: #596780;
+            margin-bottom: 15px;
+        }
+
+        .content-section ul {
+            padding-left: 22px;
+            color: #596780;
+        }
+
+        .content-section li {
+            margin-bottom: 10px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: #eef2ff;
+            color: #3b5cbf;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            background: #f1f3f9;
+            border: 1px dashed #c7d0e2;
+            border-radius: 14px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            color: #8a96ad;
+        }
+
+        .gallery-item i {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            color: #9aa9c7;
+        }
+
+        .gallery-item p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 24px;
+            background: #1f2b4e;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: 0.25s;
+        }
+
+        .back-button:hover {
+            background: #2b3f77;
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            text-align: center;
+            color: #929db1;
+            font-size: 0.85rem;
+            padding: 35px 0 10px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 90px 25px 40px;
+            }
+
+            .project-info {
+                grid-template-columns: 1fr;
+            }
+
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .content-section {
+                padding: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- ORIGINAL BLUE SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <h2>Khuzairy</h2>
+        <div class="title-tag">Information Technology Student</div>
+
+        <nav class="sidebar-nav">
+            <a href="../index.html">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="../about.html">
+                <i class="fas fa-user"></i>
+                <span>About</span>
+            </a>
+
+            <a href="../biodata.html">
+                <i class="fas fa-id-card"></i>
+                <span>My Biodata</span>
+            </a>
+
+            <a href="../portfolio.html" class="active">
+                <i class="fas fa-folder-open"></i>
+                <span>My Portfolio</span>
+            </a>
+
+            <a href="../video.html">
+                <i class="fas fa-video"></i>
+                <span>My Video</span>
+            </a>
+
+            <a href="../comments.html">
+                <i class="fas fa-comment-dots"></i>
+                <span>Your Comments</span>
+            </a>
+        </nav>
+
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/mohdkhuzairy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <a href="https://github.com/MohdKhuzairyy" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+
+    </aside>
+
+    <!-- PROJECT CONTENT -->
+
+    <main class="main-content">
+        <div class="page-container">
+
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> /
+                <a href="../portfolio.html">My Portfolio</a> /
+                Landslide Management System
+            </div>
+
+            <header class="project-header">
+                <span class="project-label">
+                    <i class="fas fa-mountain"></i> Academic Project
+                </span>
+
+                <h1>Landslide Management System</h1>
+
+                <p>
+                    An IoT-based monitoring system designed to help monitor
+                    environmental conditions and provide early warnings
+                    about potential landslide risks.
+                </p>
+            </header>
+
+            <div class="project-info">
+
+                <div class="info-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h4>Project Year</h4>
+                    <p>2024</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-users"></i>
+                    <h4>Team Members</h4>
+                    <p>3 Members</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-code-branch"></i>
+                    <h4>Project Status</h4>
+                    <p>In Development</p>
+                </div>
+
+            </div>
+
+            <section class="content-section">
+                <h2><i class="fas fa-info-circle"></i>Project Overview</h2>
+
+                <p>
+                    The Landslide Management System is a project that focuses
+                    on using Internet of Things (IoT) technology to monitor
+                    environmental conditions that may contribute to landslides.
+                </p>
+
+                <p>
+                    The system aims to collect data from different sensors
+                    and process the information to identify possible
+                    environmental risks. The collected data can be used
+                    to support monitoring activities and provide useful
+                    information for early warning purposes.
+                </p>
+            </section>
+
+            <section class="content-section">
+                <h2><i class="fas fa-bullseye"></i>Project Objectives</h2>
+
+                <ul>
+                    <li>
+                        To develop an IoT-based system for monitoring
+                        environmental conditions.
+                    </li>
+
+                    <li>
+                        To collect and analyse sensor data related to
+                        potential landslide conditions.
+                    </li>
+
+                    <li>
+                        To provide an early warning mechanism when
+                        abnormal environmental conditions are detected.
+                    </li>
+
+                    <li>
+                        To improve the accessibility of environmental
+                        monitoring information.
+                    </li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2><i class="fas fa-exclamation-triangle"></i>Challenges and Proposed Features</h2>
+
+                <p>
+                    One of the main challenges of this project is ensuring
+                    that sensor readings are collected accurately and
+                    communicated effectively to the monitoring system.
+                </p>
+
+                <ul>
+                    <li>Monitoring environmental conditions using IoT sensors.</li>
+                    <li>Collecting and storing sensor readings in a database.</li>
+                    <li>Displaying monitoring information through a web interface.</li>
+                    <li>Identifying abnormal readings through data analysis.</li>
+                    <li>Providing alerts when certain conditions are detected.</li>
+                </ul>
+            </section>
+
+            <section class="content-section">
+                <h2><i class="fas fa-laptop-code"></i>Technology Stack</h2>
+
+                <p>
+                    The project involves several technologies for system
+                    development, data management and monitoring.
+                </p>
+
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">IoT Sensors</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">Data Analytics</span>
+                    <span class="tech-tag">Alert System</span>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2><i class="fas fa-images"></i>Project Gallery</h2>
+
+                <p>
+                    The following section is reserved for project screenshots
+                    and development progress.
+                </p>
+
+                <div class="project-gallery">
+
+                    <div class="gallery-item">
+                        <i class="fas fa-image"></i>
+                        <p>System Interface Screenshot</p>
+                    </div>
+
+                    <div class="gallery-item">
+                        <i class="fas fa-image"></i>
+                        <p>Project Development Screenshot</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <a href="../portfolio.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+
+            <footer class="footer">
+                <p>&copy; <span id="currentYear"></span> Mohammad Khuzairy. All rights reserved.</p>
+            </footer>
+
+        </div>
+    </main>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.getElementById("sidebar");
+
+        menuToggle.addEventListener("click", function () {
+            sidebar.classList.toggle("open");
+
+            const icon = menuToggle.querySelector("i");
+
+            if (sidebar.classList.contains("open")) {
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-times");
+            } else {
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+            }
+        });
+
+        document.querySelectorAll(".sidebar-nav a").forEach(link => {
+            link.addEventListener("click", function () {
+                sidebar.classList.remove("open");
+
+                const icon = menuToggle.querySelector("i");
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+            });
+        });
+
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

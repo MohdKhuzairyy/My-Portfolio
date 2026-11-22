@@ -1,0 +1,740 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPPI UMS Website | Khuzairy</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f6f8fc;
+            color: #1e1e2f;
+            line-height: 1.6;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            color: #f0f0f5;
+            padding: 2rem 1.2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+            z-index: 10;
+            overflow-y: auto;
+            transition: all 0.2s;
+        }
+
+        .sidebar h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.3rem;
+            background: linear-gradient(to right, #e0e7ff, #b1c9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .sidebar .title-tag {
+            color: #aab8e0;
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 1rem;
+            width: 100%;
+        }
+
+        .sidebar-nav {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ccd6f0;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 14px;
+            font-weight: 450;
+            transition: all 0.2s ease;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .sidebar-nav a i {
+            width: 22px;
+            font-size: 1.1rem;
+            color: #7d93c7;
+            transition: 0.2s;
+        }
+
+        .sidebar-nav a:hover {
+            background: rgba(255, 255, 255, 0.07);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.05);
+            transform: translateX(4px);
+        }
+
+        .sidebar-nav a:hover i { color: #b7cdff; }
+
+        .sidebar-nav a.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border-left: 3px solid #6d8cff;
+        }
+
+        .sidebar .social-links {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            display: flex;
+            gap: 1.2rem;
+            font-size: 1.2rem;
+            color: #859bc9;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .sidebar .social-links a {
+            color: #9aafdb;
+            transition: 0.2s;
+        }
+
+        .sidebar .social-links a:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* MOBILE MENU */
+
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 20;
+            background: #1a1a2e;
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* MAIN CONTENT */
+
+        .main-content {
+            margin-left: 240px;
+            min-height: 100vh;
+            padding: 55px 7%;
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .breadcrumb {
+            color: #7b879e;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .breadcrumb a {
+            color: #3b5cbf;
+            text-decoration: none;
+        }
+
+        .project-header {
+            margin-bottom: 30px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .project-label {
+            display: inline-block;
+            background: #e8edff;
+            color: #3b5cbf;
+            padding: 7px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-header h1 {
+            font-size: clamp(2.2rem, 5vw, 3.3rem);
+            color: #1a1a2e;
+            letter-spacing: -1.5px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .project-header p {
+            color: #68758d;
+            font-size: 1.05rem;
+            max-width: 750px;
+        }
+
+        /* SECTIONS */
+
+        .content-section {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #e8ecf4;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(20, 35, 70, 0.04);
+        }
+
+        .content-section h2 {
+            color: #1a1a2e;
+            font-size: 1.35rem;
+            margin-bottom: 15px;
+        }
+
+        .content-section h2 i {
+            color: #3b5cbf;
+            margin-right: 10px;
+        }
+
+        .content-section p {
+            color: #596780;
+            margin-bottom: 12px;
+        }
+
+        /* SCREENSHOT DISPLAY */
+
+        .main-screenshot {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .main-screenshot .screenshot-placeholder {
+            min-height: 350px;
+        }
+
+        .screenshot-placeholder {
+            width: 100%;
+            min-height: 240px;
+            background: #f1f3f9;
+            border: 2px dashed #c7d0e2;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+            color: #8994a8;
+        }
+
+        .screenshot-placeholder i {
+            font-size: 2.8rem;
+            color: #9aa9c7;
+            margin-bottom: 15px;
+        }
+
+        .screenshot-placeholder strong {
+            color: #52658b;
+            margin-bottom: 5px;
+        }
+
+        .screenshot-placeholder span {
+            font-size: 0.85rem;
+        }
+
+        .screenshot-caption {
+            text-align: center;
+            color: #8994a8;
+            font-size: 0.85rem;
+            margin-top: 12px;
+        }
+
+        /* TWO COLUMN SCREENSHOTS */
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+            margin-top: 20px;
+        }
+
+        .screenshot-card {
+            min-width: 0;
+        }
+
+        .screenshot-card h3 {
+            color: #1a1a2e;
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .screenshot-card .screenshot-placeholder {
+            min-height: 260px;
+        }
+
+        /* CONTRIBUTIONS */
+
+        .contribution-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contribution-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: #596780;
+            margin-bottom: 14px;
+        }
+
+        .contribution-list i {
+            color: #3b5cbf;
+            margin-top: 5px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: #eef2ff;
+            color: #3b5cbf;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .project-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid #e8ecf4;
+            box-shadow: 0 5px 20px rgba(20, 35, 70, 0.04);
+        }
+
+        .info-card i {
+            color: #3b5cbf;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .info-card h4 {
+            color: #8994a8;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .info-card p {
+            color: #1a1a2e;
+            font-weight: 600;
+        }
+
+        /* BUTTONS AND FOOTER */
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 24px;
+            background: #1f2b4e;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: 0.25s;
+        }
+
+        .back-button:hover {
+            background: #2b3f77;
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            text-align: center;
+            color: #8994a8;
+            font-size: 0.85rem;
+            padding: 45px 0 10px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1000px) {
+            .main-content { padding: 45px 5%; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.open { transform: translateX(0); }
+
+            .main-content {
+                margin-left: 0;
+                padding: 90px 25px 40px;
+            }
+
+            .project-info { grid-template-columns: 1fr; }
+
+            .screenshot-grid { grid-template-columns: 1fr; }
+
+            .content-section { padding: 23px; }
+
+            .main-screenshot .screenshot-placeholder {
+                min-height: 230px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .main-content { padding: 85px 18px 30px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+        <h2>Khuzairy</h2>
+        <div class="title-tag">Information Technology Student</div>
+
+        <nav class="sidebar-nav">
+            <a href="index.html">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="about.html">
+                <i class="fas fa-user"></i>
+                <span>About</span>
+            </a>
+
+            <a href="biodata.html">
+                <i class="fas fa-id-card"></i>
+                <span>My Biodata</span>
+            </a>
+
+            <a href="portfolio.html" class="active">
+                <i class="fas fa-folder-open"></i>
+                <span>My Portfolio</span>
+            </a>
+
+            <a href="video.html">
+                <i class="fas fa-video"></i>
+                <span>My Video</span>
+            </a>
+
+            <a href="comments.html">
+                <i class="fas fa-comment-dots"></i>
+                <span>Your Comments</span>
+            </a>
+        </nav>
+
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/mohdkhuzairy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <a href="https://github.com/MohdKhuzairyy" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+        <div class="page-container">
+
+            <div class="breadcrumb">
+                <a href="index.html">Home</a> /
+                <a href="portfolio.html">My Portfolio</a> /
+                BPPI UMS Website
+            </div>
+
+            <header class="project-header">
+                <span class="project-label">
+                    <i class="fas fa-globe"></i> Web Development
+                </span>
+
+                <h1>BPPI UMS Website</h1>
+
+                <p>
+                    A website development project for Bahagian Penyelidikan
+                    dan Penerbitan Ilmiah (BPPI), Universiti Malaysia Sabah.
+                    The project involved designing and developing web pages
+                    to present departmental information and services.
+                </p>
+            </header>
+
+            <!-- PROJECT INFORMATION -->
+
+            <div class="project-info">
+
+                <div class="info-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h4>Development Period</h4>
+                    <p>Last Semester Break</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>Project Type</h4>
+                    <p>Website Development</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-university"></i>
+                    <h4>Organisation</h4>
+                    <p>BPPI, UMS</p>
+                </div>
+
+            </div>
+
+            <!-- MAIN WEBSITE SCREENSHOT -->
+
+            <section class="main-screenshot">
+                <div class="screenshot-placeholder">
+                    <i class="fas fa-desktop"></i>
+                    <strong>BPPI UMS Main Website Screenshot</strong>
+                    <span>Add your main homepage screenshot here</span>
+                    <!-- Replace this placeholder with your homepage screenshot -->
+                </div>
+
+                <p class="screenshot-caption">
+                    Figure 1: Main page of the BPPI UMS website
+                </p>
+            </section>
+
+            <!-- PROJECT OVERVIEW -->
+
+            <section class="content-section">
+                <h2><i class="fas fa-info-circle"></i>Project Overview</h2>
+
+                <p>
+                    The BPPI UMS website was developed to provide a digital
+                    platform for presenting information about the department,
+                    its services, research activities and related resources.
+                </p>
+
+                <p>
+                    The development focused on organising information into
+                    accessible sections and creating a consistent website
+                    layout that allows visitors to navigate the department's
+                    information more easily.
+                </p>
+            </section>
+
+            <!-- OTHER WEBSITE PAGES -->
+
+            <section class="content-section">
+                <h2><i class="fas fa-images"></i>Website Pages and Features</h2>
+
+                <p>
+                    Apart from the main homepage, the website includes other
+                    sections that provide visitors with useful departmental
+                    information and ways to get in touch.
+                </p>
+
+                <div class="screenshot-grid">
+
+                    <div class="screenshot-card">
+                        <h3>
+                            <i class="fas fa-envelope"></i>
+                            Contact Us Form
+                        </h3>
+
+                        <div class="screenshot-placeholder">
+                            <i class="fas fa-file-alt"></i>
+                            <strong>Contact Us Form Screenshot</strong>
+                            <span>Add your Contact Us form screenshot here</span>
+                        </div>
+
+                        <p class="screenshot-caption">
+                            Figure 2: Contact Us page and enquiry form
+                        </p>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <h3>
+                            <i class="fas fa-map-marker-alt"></i>
+                            Department Location
+                        </h3>
+
+                        <div class="screenshot-placeholder">
+                            <i class="fas fa-map"></i>
+                            <strong>Department Location Screenshot</strong>
+                            <span>Add your department location screenshot here</span>
+                        </div>
+
+                        <p class="screenshot-caption">
+                            Figure 3: Department location information
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- CONTRIBUTIONS -->
+
+            <section class="content-section">
+                <h2><i class="fas fa-tasks"></i>My Contributions</h2>
+
+                <p>
+                    My involvement in this project focused on website design
+                    and development. The work included organising page layouts,
+                    presenting information and building website sections.
+                </p>
+
+                <ul class="contribution-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Designed and organised website page layouts.</span>
+                    </li>
+
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Developed website sections to present departmental information.</span>
+                    </li>
+
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Worked on the Contact Us section and department information.</span>
+                    </li>
+
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Improved the presentation and navigation of website content.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- TECHNOLOGY STACK -->
+
+            <section class="content-section">
+                <h2><i class="fas fa-code"></i>Tools and Technologies</h2>
+
+                <p>
+                    The website was developed using a content management
+                    system and page-building tools, alongside web technologies.
+                </p>
+
+                <div class="tech-stack">
+                    <span class="tech-tag">Joomla</span>
+                    <span class="tech-tag">SP Page Builder Pro</span>
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">CSS</span>
+                    <span class="tech-tag">Web Design</span>
+                    <span class="tech-tag">Responsive Design</span>
+                </div>
+            </section>
+
+            <a href="portfolio.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+
+            <footer class="footer">
+                <p>&copy; <span id="year"></span> Mohammad Khuzairy. All Rights Reserved.</p>
+            </footer>
+
+        </div>
+    </main>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.getElementById("sidebar");
+
+        menuToggle.addEventListener("click", function () {
+            sidebar.classList.toggle("open");
+
+            const icon = menuToggle.querySelector("i");
+
+            if (sidebar.classList.contains("open")) {
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-times");
+            } else {
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+            }
+        });
+
+        document.querySelectorAll(".sidebar-nav a").forEach(link => {
+            link.addEventListener("click", function () {
+                sidebar.classList.remove("open");
+
+                const icon = menuToggle.querySelector("i");
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+            });
+        });
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1015 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Comments | Khuzairy</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #f3ede3;
+            color: #292b36;
+            line-height: 1.7;
+        }
+
+        /* SIDEBAR - ORIGINAL DESIGN */
+
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            color: #f0f0f5;
+            padding: 2rem 1.2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+            z-index: 10;
+            overflow-y: auto;
+            transition: all 0.2s;
+        }
+
+        .sidebar h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.3rem;
+            background: linear-gradient(to right, #e0e7ff, #b1c9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .sidebar .title-tag {
+            color: #aab8e0;
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 1rem;
+            width: 100%;
+        }
+
+        .sidebar-nav {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ccd6f0;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 14px;
+            font-weight: 450;
+            transition: all 0.2s ease;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .sidebar-nav a i {
+            width: 22px;
+            font-size: 1.1rem;
+            color: #7d93c7;
+            transition: 0.2s;
+        }
+
+        .sidebar-nav a:hover {
+            background: rgba(255, 255, 255, 0.07);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.05);
+            transform: translateX(4px);
+        }
+
+        .sidebar-nav a:hover i {
+            color: #b7cdff;
+        }
+
+        .sidebar-nav a.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border-left: 3px solid #6d8cff;
+        }
+
+        .sidebar .social-links {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            display: flex;
+            gap: 1.2rem;
+            font-size: 1.2rem;
+            color: #859bc9;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .sidebar .social-links a {
+            color: #9aafdb;
+            transition: 0.2s;
+        }
+
+        .sidebar .social-links a:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* MOBILE MENU */
+
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 20;
+            background: #1a1a2e;
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* MAIN LAYOUT */
+
+        .main-content {
+            margin-left: 240px;
+            min-height: 100vh;
+            padding: 65px 7%;
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        /* PAGE HEADER */
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 45px;
+            animation: fadeUp 0.8s ease;
+        }
+
+        .header-icon {
+            width: 66px;
+            height: 66px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            background: #e5d8c6;
+            color: #906b48;
+            border-radius: 22px;
+            font-size: 1.7rem;
+            transform: rotate(-5deg);
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            background: linear-gradient(120deg, #765337, #b68a5e, #8b6241);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .page-header p {
+            max-width: 650px;
+            margin: auto;
+            color: #777064;
+            font-size: 1.05rem;
+        }
+
+        .header-line {
+            width: 65px;
+            height: 4px;
+            background: #b68a5e;
+            border-radius: 20px;
+            margin: 25px auto 0;
+        }
+
+        /* QR CODE SECTION - UPDATED */
+
+        .qr-section {
+            background: white;
+            border-radius: 24px;
+            padding: 40px 35px;
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0;
+            border: 1px solid #eee5d9;
+            box-shadow: 0 12px 35px rgba(91, 68, 43, 0.06);
+            animation: fadeUp 0.9s ease;
+        }
+
+        .qr-content {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            order: 2;
+        }
+
+        .qr-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f5eee4;
+            color: #94704d;
+            padding: 7px 13px;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .qr-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #39332d;
+            margin-bottom: 12px;
+        }
+
+        .qr-content p {
+            color: #82796e;
+            font-size: 0.98rem;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+
+        .qr-instruction {
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            color: #a17b53;
+            background: #f5eee4;
+            padding: 11px 19px;
+            border-radius: 30px;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        .qr-image-wrapper {
+            width: 320px;
+            height: 320px;
+            max-width: 100%;
+            flex-shrink: 0;
+            background: #faf8f4;
+            border: 2px dashed #d6c2a8;
+            border-radius: 22px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            order: 1;
+        }
+
+        .qr-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        /* FORM SECTION - ORIGINAL CSS UNCHANGED */
+
+        .form-section {
+            background: white;
+            padding: 45px;
+            border-radius: 24px;
+            border: 1px solid #eee5d9;
+            box-shadow: 0 12px 35px rgba(91, 68, 43, 0.06);
+            animation: fadeUp 1s ease;
+        }
+
+        .form-heading {
+            text-align: center;
+            margin-bottom: 38px;
+        }
+
+        .form-heading .small-title {
+            color: #b18a62;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 9px;
+        }
+
+        .form-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #51402f;
+            margin-bottom: 12px;
+        }
+
+        .form-description {
+            color: #898074;
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            display: block;
+            color: #39352f;
+            font-size: 0.96rem;
+            font-weight: 700;
+            margin-bottom: 11px;
+        }
+
+        .required {
+            color: #c56d5e;
+        }
+
+        /* INPUTS */
+
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 17px;
+            border: 1px solid #e5ded3;
+            border-radius: 12px;
+            background: #fcfaf7;
+            color: #39352f;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select:focus,
+        .form-group input[type="email"]:focus,
+        .form-group textarea:focus {
+            border-color: #b68a5e;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(182, 138, 94, 0.12);
+        }
+
+        .form-group textarea {
+            min-height: 155px;
+            resize: vertical;
+        }
+
+        /* RATING */
+
+        .rating-options {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+
+        .rating-options input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .rating-options label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            min-height: 85px;
+            border: 1px solid #e8e0d5;
+            background: #fcfaf7;
+            border-radius: 14px;
+            color: #8c8174;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 700;
+        }
+
+        .rating-options label i {
+            font-size: 1.2rem;
+            color: #c4ad8e;
+        }
+
+        .rating-options label:hover {
+            border-color: #b68a5e;
+            transform: translateY(-3px);
+        }
+
+        .rating-options input:checked + label {
+            background: #f3e8d9;
+            border-color: #b68a5e;
+            color: #765337;
+            box-shadow: 0 5px 15px rgba(182, 138, 94, 0.12);
+        }
+
+        .rating-options input:checked + label i {
+            color: #a87946;
+        }
+
+        .rating-options input:focus-visible + label {
+            outline: 3px solid rgba(182, 138, 94, 0.35);
+            outline-offset: 3px;
+        }
+
+        .rating-hint {
+            color: #a0978b;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        /* EMAIL RESPONSE OPTION */
+
+        .response-option {
+            padding: 19px 20px;
+            border: 1px solid #e8e0d5;
+            background: #fcfaf7;
+            border-radius: 14px;
+        }
+
+        .response-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            color: #51483d;
+            font-size: 0.93rem;
+            font-weight: 600;
+        }
+
+        .response-checkbox input {
+            width: 19px;
+            height: 19px;
+            accent-color: #94704d;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .response-description {
+            color: #93897c;
+            font-size: 0.83rem;
+            margin: 7px 0 0 31px;
+        }
+
+        .email-field {
+            margin-top: 20px;
+            display: none;
+            animation: fadeUp 0.3s ease;
+        }
+
+        .email-field.show {
+            display: block;
+        }
+
+        .email-field label {
+            display: block;
+            color: #51483d;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 9px;
+        }
+
+        /* SUBMIT BUTTON */
+
+        .submit-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 17px 22px;
+            background: linear-gradient(120deg, #765337, #a47b53);
+            color: white;
+            border: none;
+            border-radius: 13px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(118, 83, 55, 0.18);
+            transition: all 0.25s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(118, 83, 55, 0.25);
+            background: linear-gradient(120deg, #65452d, #906b48);
+        }
+
+        .submit-button i {
+            transition: transform 0.2s ease;
+        }
+
+        .submit-button:hover i {
+            transform: translateX(4px);
+        }
+
+        .privacy-note {
+            color: #a0978b;
+            font-size: 0.82rem;
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            text-align: center;
+            color: #998e80;
+            font-size: 0.85rem;
+            padding: 40px 0 10px;
+        }
+
+        /* ANIMATIONS */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 90px 25px 40px;
+            }
+
+            /* QR SECTION RESPONSIVE */
+
+            .qr-section {
+                padding: 30px 25px;
+            }
+
+            .qr-image-wrapper {
+                width: 280px;
+                height: 280px;
+            }
+
+            .qr-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .qr-content p {
+                font-size: 0.93rem;
+            }
+
+            .form-section {
+                padding: 32px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 85px 17px 30px;
+            }
+
+            .page-header h1 {
+                font-size: 2.8rem;
+            }
+
+            /* QR SECTION RESPONSIVE */
+
+            .qr-section {
+                padding: 25px 18px;
+            }
+
+            .qr-image-wrapper {
+                width: 240px;
+                height: 240px;
+            }
+
+            .qr-content h2 {
+                font-size: 1.55rem;
+            }
+
+            .qr-content p {
+                font-size: 0.9rem;
+            }
+
+            .qr-instruction {
+                font-size: 0.8rem;
+                padding: 10px 14px;
+            }
+
+            .form-section {
+                padding: 27px 19px;
+            }
+
+            .form-heading h2 {
+                font-size: 1.7rem;
+            }
+
+            .rating-options {
+                gap: 7px;
+            }
+
+            .rating-options label {
+                min-height: 70px;
+                font-size: 0.9rem;
+            }
+
+            .rating-options label i {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MOBILE MENU -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <h2>Khuzairy</h2>
+        <div class="title-tag">Information Technology Student</div>
+
+        <nav class="sidebar-nav">
+            <a href="index.html">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="about.html">
+                <i class="fas fa-user"></i>
+                <span>About</span>
+            </a>
+
+            <a href="biodata.html">
+                <i class="fas fa-id-card"></i>
+                <span>My Biodata</span>
+            </a>
+
+            <a href="portfolio.html">
+                <i class="fas fa-folder-open"></i>
+                <span>My Portfolio</span>
+            </a>
+
+            <a href="video.html">
+                <i class="fas fa-video"></i>
+                <span>My Video</span>
+            </a>
+
+            <a href="comments.html" class="active">
+                <i class="fas fa-comment-dots"></i>
+                <span>Your Comments</span>
+            </a>
+        </nav>
+
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/mohdkhuzairy"
+               target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <a href="https://github.com/MohdKhuzairyy"
+               target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <div class="page-container">
+
+            <!-- PAGE HEADER -->
+            <header class="page-header">
+
+                <div class="header-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+
+                <h1>Your Comments</h1>
+
+                <p>
+                    Your feedback means a lot to me! Take just 1–3 minutes
+                    to share your experience, rate my website and let me
+                    know what you think. Every suggestion helps me make
+                    this website better.
+                </p>
+
+                <div class="header-line"></div>
+
+            </header>
+
+            <!-- FEEDBACK FORM - ORIGINAL STRUCTURE UNCHANGED -->
+            <section class="form-section">
+
+                <div class="form-heading">
+
+                    <p class="small-title">A Few Minutes of Your Time</p>
+
+                    <h2>Your Opinion Counts</h2>
+
+                    <p class="form-description">
+                        Please answer the questions below honestly.
+                        Your responses will help me understand your
+                        experience and improve the website.
+                    </p>
+
+                </div>
+
+                <form action="https://formspree.io/f/mgakzqyg" method="POST">
+
+                    <!-- SPAM PROTECTION -->
+                    <input type="text" name="_gotcha" style="display:none">
+
+                    <!-- FAVOURITE PAGE -->
+                    <div class="form-group">
+
+                        <label for="favourite-page" class="form-label">
+                            01. Which page did you enjoy the most?
+                            <span class="required">*</span>
+                        </label>
+
+                        <select
+                            id="favourite-page"
+                            name="favourite_page"
+                            required
+                        >
+                            <option value="" disabled selected>
+                                Select your favourite page
+                            </option>
+
+                            <option value="Homepage">Homepage</option>
+                            <option value="About">About</option>
+                            <option value="My Biodata">My Biodata</option>
+                            <option value="My Portfolio">My Portfolio</option>
+                            <option value="My Video">My Video</option>
+                            <option value="ParkMana">ParkMana Project</option>
+                            <option value="BPPI UMS Website">BPPI UMS Website</option>
+                            <option value="My Activities">My Activities</option>
+                            <option value="All of it">All of it</option>
+                        </select>
+
+                    </div>
+
+                    <!-- WEBSITE RATING -->
+                    <div class="form-group">
+
+                        <span class="form-label">
+                            02. How would you rate my website?
+                            <span class="required">*</span>
+                        </span>
+
+                        <div class="rating-options">
+
+                            <div>
+                                <input type="radio" id="rating1" name="rating" value="1" required>
+                                <label for="rating1">
+                                    <i class="far fa-star"></i>
+                                    1
+                                </label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="rating2" name="rating" value="2">
+                                <label for="rating2">
+                                    <i class="far fa-star"></i>
+                                    2
+                                </label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="rating3" name="rating" value="3">
+                                <label for="rating3">
+                                    <i class="far fa-star"></i>
+                                    3
+                                </label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="rating4" name="rating" value="4">
+                                <label for="rating4">
+                                    <i class="far fa-star"></i>
+                                    4
+                                </label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="rating5" name="rating" value="5">
+                                <label for="rating5">
+                                    <i class="far fa-star"></i>
+                                    5
+                                </label>
+                            </div>
+
+                        </div>
+
+                        <p class="rating-hint">
+                            1 = Needs Improvement &nbsp; | &nbsp; 5 = Excellent
+                        </p>
+
+                    </div>
+
+                    <!-- COMMENTS -->
+                    <div class="form-group">
+
+                        <label for="comments" class="form-label">
+                            03. Your Comments or Suggestions
+                            <span class="required">*</span>
+                        </label>
+
+                        <textarea
+                            id="comments"
+                            name="comments"
+                            placeholder="What did you like about the website? Is there anything I could improve? Feel free to share your thoughts..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+                    <!-- OPTIONAL EMAIL RESPONSE -->
+                    <div class="form-group">
+
+                        <div class="response-option">
+
+                            <label class="response-checkbox" for="request-response">
+                                <input
+                                    type="checkbox"
+                                    id="request-response"
+                                    name="request_response"
+                                    value="Yes"
+                                >
+
+                                <span>
+                                    I would like to receive a response
+                                </span>
+                            </label>
+
+                            <p class="response-description">
+                                Tick this box if you would like me to
+                                contact you regarding your feedback.
+                            </p>
+
+                            <div class="email-field" id="email-field">
+
+                                <label for="email">
+                                    Your Email Address
+                                    <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="example@email.com"
+                                    disabled
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- SUBMIT -->
+                    <button type="submit" class="submit-button">
+                        Submit My Feedback
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <p class="privacy-note">
+                        <i class="fas fa-lock"></i>
+                        Your responses will only be used for website
+                        feedback and improvement purposes.
+                    </p>
+
+                </form>
+
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="footer">
+                <p>
+                    &copy; <span id="year"></span>
+                    Mohammad Khuzairy. All Rights Reserved.
+                </p>
+            </footer>
+
+        </div>
+
+    </main>
+
+    <script>
+        // MOBILE SIDEBAR
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.getElementById("sidebar");
+
+        menuToggle.addEventListener("click", function () {
+            sidebar.classList.toggle("open");
+
+            const icon = menuToggle.querySelector("i");
+
+            if (sidebar.classList.contains("open")) {
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-times");
+            } else {
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+            }
+        });
+
+        document.querySelectorAll(".sidebar-nav a").forEach(link => {
+            link.addEventListener("click", function () {
+                sidebar.classList.remove("open");
+
+                const icon = menuToggle.querySelector("i");
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+            });
+        });
+
+        // OPTIONAL EMAIL FIELD
+        const responseCheckbox = document.getElementById("request-response");
+        const emailField = document.getElementById("email-field");
+        const emailInput = document.getElementById("email");
+
+        responseCheckbox.addEventListener("change", function () {
+            if (this.checked) {
+                emailField.classList.add("show");
+                emailInput.disabled = false;
+                emailInput.required = true;
+            } else {
+                emailField.classList.remove("show");
+                emailInput.disabled = true;
+                emailInput.required = false;
+                emailInput.value = "";
+            }
+        });
+
+        // UPDATE FOOTER YEAR
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

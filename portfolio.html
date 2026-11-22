@@ -1,0 +1,1889 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | Khuzairy</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #f3ede3;
+            color: #292b36;
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           SIDEBAR - ORIGINAL DESIGN
+        ========================================= */
+
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            color: #f0f0f5;
+            padding: 2rem 1.2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+            z-index: 10;
+            overflow-y: auto;
+            transition: all 0.2s;
+        }
+
+        .sidebar h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.3rem;
+            background: linear-gradient(to right, #e0e7ff, #b1c9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .sidebar .title-tag {
+            color: #aab8e0;
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 1rem;
+            width: 100%;
+        }
+
+        .sidebar-nav {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ccd6f0;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 14px;
+            font-weight: 450;
+            transition: all 0.2s ease;
+            background: transparent;
+            border: 1px solid transparent;
+        }
+
+        .sidebar-nav a i {
+            width: 22px;
+            font-size: 1.1rem;
+            color: #7d93c7;
+            transition: 0.2s;
+        }
+
+        .sidebar-nav a:hover {
+            background: rgba(255, 255, 255, 0.07);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.05);
+            transform: translateX(4px);
+        }
+
+        .sidebar-nav a:hover i {
+            color: #b7cdff;
+        }
+
+        .sidebar-nav a.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border-left: 3px solid #6d8cff;
+        }
+
+        .sidebar .social-links {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            display: flex;
+            gap: 1.2rem;
+            font-size: 1.2rem;
+            color: #859bc9;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .sidebar .social-links a {
+            color: #9aafdb;
+            transition: 0.2s;
+        }
+
+        .sidebar .social-links a:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* MOBILE MENU */
+
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            z-index: 20;
+            background: #1a1a2e;
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* =========================================
+           MAIN LAYOUT
+        ========================================= */
+
+        .main-content {
+            margin-left: 240px;
+            min-height: 100vh;
+            padding: 60px 6%;
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* =========================================
+           PAGE HEADER
+        ========================================= */
+
+        .page-header {
+            text-align: center;
+            padding: 25px 0 65px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .header-decoration {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 68px;
+            height: 68px;
+            border-radius: 22px;
+            background: #e6d6c2;
+            color: #896543;
+            font-size: 1.7rem;
+            margin-bottom: 22px;
+            transform: rotate(-6deg);
+            box-shadow: 0 8px 20px rgba(91, 68, 43, 0.08);
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 7vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            color: #765337;
+            background: linear-gradient(120deg, #68462d, #bd9366, #79583b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .heading-decoration {
+            width: 85px;
+            height: 5px;
+            border-radius: 20px;
+            background: linear-gradient(90deg, #8b6543, #d1ad85);
+            margin: 25px auto 0;
+        }
+
+        /* =========================================
+           SECTION HEADINGS
+        ========================================= */
+
+        .content-section {
+            margin-bottom: 85px;
+            scroll-margin-top: 35px;
+        }
+
+        .section-heading {
+            margin-bottom: 30px;
+        }
+
+        .section-heading .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #a17b53;
+            font-size: 0.77rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 9px;
+        }
+
+        .section-heading h2 {
+            font-family: 'Playfair Display', serif;
+            color: #44372c;
+            font-size: clamp(2rem, 4vw, 2.7rem);
+            line-height: 1.2;
+        }
+
+        .section-heading p {
+            color: #82796e;
+            font-size: 0.96rem;
+            margin-top: 10px;
+            max-width: 650px;
+        }
+
+        /* =========================================
+           PROJECT CARDS
+        ========================================= */
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: 23px;
+            overflow: hidden;
+            border: 1px solid #eee5d9;
+            box-shadow: 0 12px 35px rgba(91, 68, 43, 0.06);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(91, 68, 43, 0.12);
+        }
+
+        .project-image {
+            height: 270px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ded0bd, #f2e9dd);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(31, 27, 23, 0.35),
+                transparent 55%
+            );
+            pointer-events: none;
+        }
+
+        .project-image-label {
+            position: absolute;
+            bottom: 18px;
+            left: 20px;
+            color: white;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-content {
+            padding: 29px;
+        }
+
+        .project-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 11px;
+            background: #f3e9dc;
+            color: #97704b;
+            font-size: 0.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .project-content h3 {
+            font-family: 'Playfair Display', serif;
+            color: #493b30;
+            font-size: 1.65rem;
+            margin-bottom: 12px;
+        }
+
+        .project-content p {
+            color: #81786e;
+            font-size: 0.94rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .project-tags span {
+            padding: 6px 12px;
+            border-radius: 8px;
+            background: #f7f2eb;
+            color: #80664d;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .project-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 19px;
+            background: #49392c;
+            color: white;
+            text-decoration: none;
+            border-radius: 11px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            transition: all 0.25s ease;
+        }
+
+        .project-button:hover {
+            background: #8d6948;
+            transform: translateY(-2px);
+        }
+
+        .project-button i {
+            transition: transform 0.2s ease;
+        }
+
+        .project-button:hover i {
+            transform: translateX(4px);
+        }
+
+        /* =========================================
+           ACTIVITIES
+        ========================================= */
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .activity-card {
+            background: #ffffff;
+            border: 1px solid #eee5d9;
+            border-radius: 21px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(91, 68, 43, 0.055);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 17px 35px rgba(91, 68, 43, 0.1);
+        }
+
+        /* ACTIVITY IMAGE CAROUSEL */
+
+        .activity-carousel {
+            position: relative;
+            height: 245px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #e4d5c2, #f3e9dc);
+        }
+
+        .activity-carousel .carousel-track {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .activity-carousel .carousel-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.45s ease, visibility 0.45s ease;
+        }
+
+        .activity-carousel .carousel-slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .activity-carousel .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #987a5c;
+            background: linear-gradient(135deg, #e8dac8, #f5eee5);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .carousel-placeholder i {
+            font-size: 2.4rem;
+            opacity: 0.75;
+        }
+
+        .carousel-placeholder span {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 13px;
+            pointer-events: none;
+        }
+
+        .carousel-arrow {
+            width: 37px;
+            height: 37px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 50%;
+            background: rgba(35, 30, 25, 0.55);
+            color: white;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .carousel-arrow:hover {
+            background: #8b6543;
+            transform: scale(1.08);
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 14px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 7px;
+        }
+
+        .carousel-dot {
+            width: 7px;
+            height: 7px;
+            border: none;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.65);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .carousel-dot.active {
+            width: 23px;
+            background: white;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-placeholder {
+            display: none;
+        }
+
+        .carousel-slide.image-error .carousel-placeholder {
+            display: flex;
+        }
+
+        /* ACTIVITY INFORMATION */
+
+        .activity-content {
+            padding: 25px 26px 27px;
+        }
+
+        .activity-topline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 13px;
+            flex-wrap: wrap;
+        }
+
+        .activity-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: #98734f;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .activity-date i {
+            font-size: 0.85rem;
+        }
+
+        .activity-role {
+            padding: 5px 11px;
+            border-radius: 30px;
+            background: #f3e9dc;
+            color: #8a6748;
+            font-size: 0.73rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .activity-content h3 {
+            font-family: 'Playfair Display', serif;
+            color: #493b30;
+            font-size: 1.3rem;
+            line-height: 1.4;
+            margin-bottom: 11px;
+        }
+
+        .activity-content p {
+            color: #81786e;
+            font-size: 0.89rem;
+            line-height: 1.8;
+        }
+
+        /* =========================================
+           ORGANISATION TIMELINE
+        ========================================= */
+
+        .organisation-list {
+            display: flex;
+            flex-direction: column;
+            gap: 23px;
+        }
+
+        .organisation-card {
+            position: relative;
+            background: white;
+            border: 1px solid #eee5d9;
+            border-radius: 20px;
+            padding: 28px 32px;
+            box-shadow: 0 10px 30px rgba(91, 68, 43, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .organisation-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 35px rgba(91, 68, 43, 0.09);
+        }
+
+        .organisation-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: linear-gradient(180deg, #b58b61, #e2c9a9);
+        }
+
+        .organisation-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 17px;
+            margin-bottom: 23px;
+        }
+
+        .organisation-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: #f3e9dc;
+            color: #92704d;
+            font-size: 1.2rem;
+        }
+
+        .organisation-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: #493b30;
+            line-height: 1.4;
+        }
+
+        .organisation-header p {
+            color: #a08e7b;
+            font-size: 0.82rem;
+            margin-top: 4px;
+        }
+
+        .timeline {
+            position: relative;
+            margin-left: 23px;
+            padding-left: 28px;
+            border-left: 2px solid #eadbc9;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -36px;
+            top: 7px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #a77c53;
+            border: 4px solid #f3e9dc;
+            box-shadow: 0 0 0 2px #c7a783;
+        }
+
+        .timeline-period {
+            display: inline-block;
+            color: #a17b53;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.7px;
+            margin-bottom: 3px;
+        }
+
+        .timeline-item h4 {
+            color: #514337;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .timeline-item p {
+            color: #918579;
+            font-size: 0.86rem;
+            margin-top: 3px;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .footer {
+            text-align: center;
+            color: #998e80;
+            font-size: 0.85rem;
+            padding: 30px 0 10px;
+            border-top: 1px solid #e8ddce;
+        }
+
+        /* =========================================
+           ANIMATIONS
+        ========================================= */
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN
+        ========================================= */
+
+        @media (max-width: 1000px) {
+            .main-content {
+                padding: 50px 5%;
+            }
+
+            .project-image {
+                height: 230px;
+            }
+
+            .activity-carousel {
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 90px 25px 40px;
+            }
+
+            .page-header {
+                padding: 15px 0 50px;
+            }
+
+            .project-grid,
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-image {
+                height: 280px;
+            }
+
+            .activity-carousel {
+                height: 280px;
+            }
+
+            .content-section {
+                margin-bottom: 65px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 85px 17px 30px;
+            }
+
+            .page-header h1 {
+                font-size: 3.2rem;
+            }
+
+            .section-heading h2 {
+                font-size: 2rem;
+            }
+
+            .project-image {
+                height: 220px;
+            }
+
+            .project-content {
+                padding: 23px;
+            }
+
+            .activity-carousel {
+                height: 220px;
+            }
+
+            .activity-content {
+                padding: 21px;
+            }
+
+            .organisation-card {
+                padding: 24px 20px 24px 25px;
+            }
+
+            .organisation-header h3 {
+                font-size: 1.15rem;
+            }
+
+            .timeline {
+                margin-left: 13px;
+                padding-left: 25px;
+            }
+
+            .timeline-item::before {
+                left: -33px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MOBILE MENU -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <h2>Khuzairy</h2>
+        <div class="title-tag">Information Technology Student</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="index.html">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="about.html">
+                <i class="fas fa-user"></i>
+                <span>About</span>
+            </a>
+
+            <a href="biodata.html">
+                <i class="fas fa-id-card"></i>
+                <span>My Biodata</span>
+            </a>
+
+            <a href="portfolio.html" class="active">
+                <i class="fas fa-folder-open"></i>
+                <span>My Portfolio</span>
+            </a>
+
+            <a href="video.html">
+                <i class="fas fa-video"></i>
+                <span>My Video</span>
+            </a>
+
+            <a href="comments.html">
+                <i class="fas fa-comment-dots"></i>
+                <span>Your Comments</span>
+            </a>
+
+        </nav>
+
+        <div class="social-links">
+
+            <a href="https://www.linkedin.com/in/mohdkhuzairy"
+               target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <a href="https://github.com/MohdKhuzairyy"
+               target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <div class="page-container">
+
+            <!-- =====================================
+                 PAGE TITLE
+            ====================================== -->
+
+            <header class="page-header">
+
+                <div class="header-decoration">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+
+                <h1>My Portfolio</h1>
+
+                <div class="heading-decoration"></div>
+
+            </header>
+
+
+            <!-- =====================================
+                 MY PROJECTS
+            ====================================== -->
+
+            <section class="content-section" id="projects">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        <i class="fas fa-code"></i>
+                        What I've Built
+                    </span>
+
+                    <h2>My Projects</h2>
+
+                    <p>
+                        A look at selected website development and
+                        system development projects that I have worked on.
+                    </p>
+
+                </div>
+
+                <div class="project-grid">
+
+                    <!-- BPPI UMS WEBSITE -->
+
+                    <article class="project-card">
+
+                        <div class="project-image">
+
+                            <img
+                                src="assets/images/portfolio/bppi-director.jpeg"
+                                alt="Khuzairy with the BPPI UMS Director"
+                                onerror="this.style.display='none'"
+                            >
+
+                            <div class="image-overlay"></div>
+
+                            <span class="project-image-label">
+                                BPPI UMS Website
+                            </span>
+
+                        </div>
+
+                        <div class="project-content">
+
+                            <span class="project-number">01</span>
+
+                            <h3>BPPI UMS Website</h3>
+
+                            <p>
+                                A website developed for Bahagian Penyelidikan
+                                dan Penerbitan Ilmiah (BPPI), Universiti
+                                Malaysia Sabah, to present departmental
+                                information, research activities and
+                                related services.
+                            </p>
+
+                            <div class="project-tags">
+                                <span>Joomla</span>
+                                <span>SP Page Builder</span>
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>Web Design</span>
+                            </div>
+
+                            <a href="BPPI.html" class="project-button">
+                                Explore Project
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PARKMANA -->
+
+                    <article class="project-card">
+
+                        <div class="project-image">
+
+                            <img
+                                src="assets/images/portfolio/parkmana-supervisor.jpg"
+                                alt="Khuzairy with his ParkMana project supervisor"
+                                onerror="this.style.display='none'"
+                            >
+
+                            <div class="image-overlay"></div>
+
+                            <span class="project-image-label">
+                                ParkMana Project
+                            </span>
+
+                        </div>
+
+                        <div class="project-content">
+
+                            <span class="project-number">02</span>
+
+                            <h3>ParkMana</h3>
+
+                            <p>
+                                A car parking management system designed
+                                to help manage parking spaces and improve
+                                the parking experience through a more
+                                organised system.
+                            </p>
+
+                            <div class="project-tags">
+                                <span>PHP</span>
+                                <span>MySQL</span>
+                                <span>JavaScript</span>
+                                <span>CSS</span>
+                                <span>HTML</span>
+                            </div>
+
+                            <a href="projects/parkmana.html" class="project-button">
+                                Explore Project
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 MY ACTIVITIES
+            ====================================== -->
+
+            <section class="content-section" id="activities">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        <i class="fas fa-calendar-check"></i>
+                        Beyond the Classroom
+                    </span>
+
+                    <h2>My Activities</h2>
+
+                    <p>
+                        Highlights from university programmes, leadership
+                        experiences and extracurricular involvement.
+                    </p>
+
+                </div>
+
+                <div class="activities-grid">
+
+                    <!-- ACTIVITY 1: U16 FOOTBALL -->
+
+                    <article class="activity-card">
+
+                        <div class="activity-carousel" data-carousel>
+
+                            <div class="carousel-track">
+
+                                <div class="carousel-slide active">
+                                    <img src="assets/images/activities/u16-football-1.jpg"
+                                         alt="U16 Football Carnival photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-futbol"></i>
+                                        <span>U16 Football Carnival - Image 1</span>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <img src="assets/images/activities/u16-football-2.jpg"
+                                         alt="U16 Football Carnival photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-futbol"></i>
+                                        <span>U16 Football Carnival - Image 2</span>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <img src="assets/images/activities/u16-football-3.jpg"
+                                         alt="U16 Football Carnival photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-futbol"></i>
+                                        <span>U16 Football Carnival - Image 3</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="carousel-controls">
+                                <button class="carousel-arrow prev" aria-label="Previous image">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="carousel-arrow next" aria-label="Next image">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+
+                            <div class="carousel-indicators">
+                                <button class="carousel-dot active" aria-label="Image 1"></button>
+                                <button class="carousel-dot" aria-label="Image 2"></button>
+                                <button class="carousel-dot" aria-label="Image 3"></button>
+                            </div>
+
+                        </div>
+
+                        <div class="activity-content">
+
+                            <div class="activity-topline">
+                                <span class="activity-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    17–19 January 2025
+                                </span>
+
+                                <span class="activity-role">Director</span>
+                            </div>
+
+                            <h3>Karnival Bola Sepak U16</h3>
+
+                            <p>
+                                Served as the Programme Director for the
+                                U16 Football Carnival. The programme's
+                                success contributed to our team being
+                                awarded "Best Course for Co-Curriculum
+                                of the Year".
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ACTIVITY 2: ASASI TALENTALES -->
+
+                    <article class="activity-card">
+
+                        <div class="activity-carousel" data-carousel>
+
+                            <div class="carousel-track">
+
+                                <div class="carousel-slide active">
+                                    <img src="assets/images/activities/talentales-1.jpg"
+                                         alt="Asasi Talentales programme photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-theater-masks"></i>
+                                        <span>Asasi Talentales - Image 1</span>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <img src="assets/images/activities/talentales-2.jpg"
+                                         alt="Asasi Talentales programme photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-theater-masks"></i>
+                                        <span>Asasi Talentales - Image 2</span>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <img src="assets/images/activities/talentales-3.jpg"
+                                         alt="Asasi Talentales programme photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-theater-masks"></i>
+                                        <span>Asasi Talentales - Image 3</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="carousel-controls">
+                                <button class="carousel-arrow prev" aria-label="Previous image">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="carousel-arrow next" aria-label="Next image">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+
+                            <div class="carousel-indicators">
+                                <button class="carousel-dot active" aria-label="Image 1"></button>
+                                <button class="carousel-dot" aria-label="Image 2"></button>
+                                <button class="carousel-dot" aria-label="Image 3"></button>
+                            </div>
+
+                        </div>
+
+                        <div class="activity-content">
+
+                            <div class="activity-topline">
+                                <span class="activity-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    28 February – 10 May 2024
+                                </span>
+
+                                <span class="activity-role">Director</span>
+                            </div>
+
+                            <h3>Asasi Talentales</h3>
+
+                            <p>
+                                I am honoured to have served as the Director
+                                of Asasi Talentales, a Shakespearean-themed
+                                theatre programme jointly organised by
+                                PPAUMS and English AUMS. One of the highlights
+                                of my foundation year, this programme pushed
+                                me to grow as a leader, problem-solver and
+                                organiser.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ACTIVITY 3: UMS SPRINT -->
+
+                    <article class="activity-card">
+
+                        <div class="activity-carousel" data-carousel>
+
+                            <div class="carousel-track">
+
+                                <div class="carousel-slide active">
+                                    <img src="assets/images/activities/sprint-1.jpg"
+                                         alt="UMS SPRINT programme photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-running"></i>
+                                        <span>UMS SPRINT - Image 1</span>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <img src="assets/images/activities/sprint-2.jpg"
+                                         alt="UMS SPRINT programme photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-running"></i>
+                                        <span>UMS SPRINT - Image 2</span>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <img src="assets/images/activities/sprint-3.jpg"
+                                         alt="UMS SPRINT programme photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-running"></i>
+                                        <span>UMS SPRINT - Image 3</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="carousel-controls">
+                                <button class="carousel-arrow prev" aria-label="Previous image">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="carousel-arrow next" aria-label="Next image">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+
+                            <div class="carousel-indicators">
+                                <button class="carousel-dot active" aria-label="Image 1"></button>
+                                <button class="carousel-dot" aria-label="Image 2"></button>
+                                <button class="carousel-dot" aria-label="Image 3"></button>
+                            </div>
+
+                        </div>
+
+                        <div class="activity-content">
+
+                            <div class="activity-topline">
+                                <span class="activity-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    16 November 2024
+                                </span>
+
+                                <span class="activity-role">Secretary</span>
+                            </div>
+
+                            <h3>UMS SPRINT</h3>
+
+                            <p>
+                                Served as the Secretary for UMS SPRINT,
+                                contributing to the programme's
+                                organisation and coordination.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ACTIVITY 4: FKI FAMILY DAY -->
+
+                    <article class="activity-card">
+
+                        <div class="activity-carousel" data-carousel>
+
+                            <div class="carousel-track">
+
+                                <div class="carousel-slide active">
+                                    <img src="assets/images/activities/fki-family-day-1.jpg"
+                                         alt="FKI Family Day 2026 photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-users"></i>
+                                        <span>FKI Family Day - Image 1</span>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <img src="assets/images/activities/fki-family-day-2.jpg"
+                                         alt="FKI Family Day 2026 photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-users"></i>
+                                        <span>FKI Family Day - Image 2</span>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <img src="assets/images/activities/fki-family-day-3.jpg"
+                                         alt="FKI Family Day 2026 photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-users"></i>
+                                        <span>FKI Family Day - Image 3</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="carousel-controls">
+                                <button class="carousel-arrow prev" aria-label="Previous image">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="carousel-arrow next" aria-label="Next image">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+
+                            <div class="carousel-indicators">
+                                <button class="carousel-dot active" aria-label="Image 1"></button>
+                                <button class="carousel-dot" aria-label="Image 2"></button>
+                                <button class="carousel-dot" aria-label="Image 3"></button>
+                            </div>
+
+                        </div>
+
+                        <div class="activity-content">
+
+                            <div class="activity-topline">
+                                <span class="activity-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    13 June 2026
+                                </span>
+
+                                <span class="activity-role">Logistics Exco</span>
+                            </div>
+
+                            <h3>FKI Family Day 2026</h3>
+
+                            <p>
+                                Served as a Logistics Exco member for
+                                FKI Family Day 2026.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ACTIVITY 5: PMUMS -->
+
+                    <article class="activity-card">
+
+                        <div class="activity-carousel" data-carousel>
+
+                            <div class="carousel-track">
+
+                                <div class="carousel-slide active">
+                                    <img src="assets/images/activities/pmums-1.jpg"
+                                         alt="Parlimen Mahasiswa UMS photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-landmark"></i>
+                                        <span>PMUMS - Image 1</span>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <img src="assets/images/activities/pmums-2.jpg"
+                                         alt="Parlimen Mahasiswa UMS photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-landmark"></i>
+                                        <span>PMUMS - Image 2</span>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <img src="assets/images/activities/pmums-3.jpg"
+                                         alt="Parlimen Mahasiswa UMS photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-landmark"></i>
+                                        <span>PMUMS - Image 3</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="carousel-controls">
+                                <button class="carousel-arrow prev" aria-label="Previous image">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="carousel-arrow next" aria-label="Next image">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+
+                            <div class="carousel-indicators">
+                                <button class="carousel-dot active" aria-label="Image 1"></button>
+                                <button class="carousel-dot" aria-label="Image 2"></button>
+                                <button class="carousel-dot" aria-label="Image 3"></button>
+                            </div>
+
+                        </div>
+
+                        <div class="activity-content">
+
+                            <div class="activity-topline">
+                                <span class="activity-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    5–8 June 2026
+                                </span>
+
+                                <span class="activity-role">Logistics Exco</span>
+                            </div>
+
+                            <h3>Parlimen Mahasiswa Universiti Malaysia Sabah (PMUMS)</h3>
+
+                            <p>
+                                Served as a Logistics Exco member for
+                                Parlimen Mahasiswa Universiti Malaysia Sabah.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ACTIVITY 6: MINGGU SUAI MESRA -->
+
+                    <article class="activity-card">
+
+                        <div class="activity-carousel" data-carousel>
+
+                            <div class="carousel-track">
+
+                                <div class="carousel-slide active">
+                                    <img src="assets/images/activities/msm-asasi-1.jpeg"
+                                         alt="Minggu Suai Mesra Asasi UMS photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-handshake"></i>
+                                        <span>MSM Asasi - Image 1</span>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <img src="assets/images/activities/msm-asasi-2.jpeg"
+                                         alt="Minggu Suai Mesra Asasi UMS photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-handshake"></i>
+                                        <span>MSM Asasi - Image 2</span>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-slide">
+                                    <img src="assets/images/activities/msm-asasi-3.jpeg"
+                                         alt="Minggu Suai Mesra Asasi UMS photograph"
+                                         onerror="this.style.display='none'">
+                                    <div class="carousel-placeholder">
+                                        <i class="fas fa-handshake"></i>
+                                        <span>MSM Asasi - Image 3</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="carousel-controls">
+                                <button class="carousel-arrow prev" aria-label="Previous image">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="carousel-arrow next" aria-label="Next image">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+
+                            <div class="carousel-indicators">
+                                <button class="carousel-dot active" aria-label="Image 1"></button>
+                                <button class="carousel-dot" aria-label="Image 2"></button>
+                                <button class="carousel-dot" aria-label="Image 3"></button>
+                            </div>
+
+                        </div>
+
+                        <div class="activity-content">
+
+                            <div class="activity-topline">
+                                <span class="activity-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    21–26 July 2024
+                                </span>
+
+                                <span class="activity-role">Facilitator</span>
+                            </div>
+
+                            <h3>Fasilitator Minggu Suai Mesra Asasi UMS Sesi 2024/2025</h3>
+
+                            <p>
+                                Served as a facilitator for Minggu Suai Mesra
+                                Asasi UMS, Session 2024/2025.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 MY ORGANISATIONS
+            ====================================== -->
+
+            <section class="content-section" id="organisations">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        <i class="fas fa-award"></i>
+                        Leadership & Involvement
+                    </span>
+
+                    <h2>My Organisations</h2>
+
+                    <p>
+                        Leadership positions and responsibilities
+                        throughout my school and university years.
+                    </p>
+
+                </div>
+
+
+                <div class="organisation-list">
+
+                    <!-- PMFKI -->
+
+                    <article class="organisation-card">
+
+                        <div class="organisation-header">
+
+                            <div class="organisation-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+
+                            <div>
+                                <h3>Persatuan Mahasiswa Komputeran dan Informatik (PMFKI)</h3>
+                                <p>Universiti Malaysia Sabah</p>
+                            </div>
+
+                        </div>
+
+                        <div class="timeline">
+
+                            <div class="timeline-item">
+                                <span class="timeline-period">2026/2027 SESSION</span>
+                                <h4>Timbalan Bendahari</h4>
+                            </div>
+
+                            <div class="timeline-item">
+                                <span class="timeline-period">2025/2026 SESSION</span>
+                                <h4>Exco Keusahawanan</h4>
+                            </div>
+
+                            <div class="timeline-item">
+                                <span class="timeline-period">2024/2025 SESSION</span>
+                                <h4>Sekretariat Exco Keusahawanan</h4>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PERSATUAN PELAJAR ASASI -->
+
+                    <article class="organisation-card">
+
+                        <div class="organisation-header">
+
+                            <div class="organisation-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+
+                            <div>
+                                <h3>Persatuan Pelajar Asasi</h3>
+                                <p>Universiti Malaysia Sabah</p>
+                            </div>
+
+                        </div>
+
+                        <div class="timeline">
+
+                            <div class="timeline-item">
+                                <span class="timeline-period">2023/2024 SESSION</span>
+                                <h4>Timbalan Setiausaha</h4>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- VICTORIA INSTITUTION CAREER CLUB -->
+
+                    <article class="organisation-card">
+
+                        <div class="organisation-header">
+
+                            <div class="organisation-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+
+                            <div>
+                                <h3>Kelab Kerjaya dan Kaunselling Victoria Institution</h3>
+                                <p>Victoria Institution, Kuala Lumpur</p>
+                            </div>
+
+                        </div>
+
+                        <div class="timeline">
+
+                            <div class="timeline-item">
+                                <span class="timeline-period">2022</span>
+                                <h4>Presiden</h4>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PEER SUPPORT CLUB -->
+
+                    <article class="organisation-card">
+
+                        <div class="organisation-header">
+
+                            <div class="organisation-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+
+                            <div>
+                                <h3>Kelab Pembimbing Rakan Sebaya Victoria Institution</h3>
+                                <p>Victoria Institution, Kuala Lumpur</p>
+                            </div>
+
+                        </div>
+
+                        <div class="timeline">
+
+                            <div class="timeline-item">
+                                <span class="timeline-period">2022</span>
+                                <h4>Presiden</h4>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer class="footer">
+                <p>
+                    &copy; <span id="year"></span>
+                    Mohammad Khuzairy. All Rights Reserved.
+                </p>
+            </footer>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
+
+    <script>
+
+        // MOBILE SIDEBAR
+
+        const menuToggle = document.getElementById("menuToggle");
+        const sidebar = document.getElementById("sidebar");
+
+        menuToggle.addEventListener("click", function () {
+
+            sidebar.classList.toggle("open");
+
+            const icon = menuToggle.querySelector("i");
+
+            if (sidebar.classList.contains("open")) {
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-times");
+            } else {
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+            }
+
+        });
+
+
+        document.querySelectorAll(".sidebar-nav a").forEach(link => {
+
+            link.addEventListener("click", function () {
+
+                sidebar.classList.remove("open");
+
+                const icon = menuToggle.querySelector("i");
+
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+
+            });
+
+        });
+
+
+        // ACTIVITY CAROUSELS
+
+        document.querySelectorAll("[data-carousel]").forEach(carousel => {
+
+            const slides = carousel.querySelectorAll(".carousel-slide");
+            const dots = carousel.querySelectorAll(".carousel-dot");
+
+            const previousButton = carousel.querySelector(".prev");
+            const nextButton = carousel.querySelector(".next");
+
+            let currentIndex = 0;
+
+            // Check whether each image loads successfully
+            slides.forEach(slide => {
+
+                const image = slide.querySelector("img");
+
+                if (!image) return;
+
+                function showPlaceholder() {
+                    slide.classList.add("image-error");
+                }
+
+                image.addEventListener("error", showPlaceholder);
+
+                // Also handle images that failed before JavaScript loaded
+                if (image.complete && image.naturalWidth === 0) {
+                    showPlaceholder();
+                }
+
+            });
+
+            function showSlide(index) {
+
+                currentIndex = (index + slides.length) % slides.length;
+
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle("active", i === currentIndex);
+                });
+
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle("active", i === currentIndex);
+                });
+
+            }
+
+            previousButton.addEventListener("click", function () {
+                showSlide(currentIndex - 1);
+            });
+
+            nextButton.addEventListener("click", function () {
+                showSlide(currentIndex + 1);
+            });
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener("click", function () {
+                    showSlide(index);
+                });
+            });
+
+        });
+
+
+        // UPDATE FOOTER YEAR
+
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+    </script>
+
+</body>
+</html>
