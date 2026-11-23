@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -595,7 +596,7 @@
         }
 
         /* =========================================
-           CONTACT SECTION
+           CONTACT SECTION - FRIENDLIER REDESIGN
         ========================================= */
 
         .contact-section {
@@ -610,7 +611,7 @@
 
         .contact-heading {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 45px;
         }
 
         .contact-heading .section-heading {
@@ -620,102 +621,255 @@
         .contact-heading p {
             color: #7a8598;
             font-size: 1rem;
+            max-width: 570px;
+            margin: 0 auto;
+            line-height: 1.8;
         }
+
+        .contact-heading .section-label {
+            margin-bottom: 13px;
+        }
+
+        /* Two-column contact grid */
 
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 20px;
+            max-width: 850px;
+            margin: 0 auto;
         }
 
         .contact-card {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            min-width: 0;
             background: #ffffff;
             border: 1px solid #e9edf3;
             border-radius: 19px;
-            padding: 30px 24px;
-            text-align: center;
+            padding: 25px;
+            text-align: left;
             box-shadow: 0 8px 25px rgba(32,49,75,0.035);
             transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 18px;
+            bottom: 18px;
+            width: 3px;
+            border-radius: 0 5px 5px 0;
+            background: #8ba9dc;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .contact-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 35px rgba(32,49,75,0.08);
+            transform: translateY(-5px);
+            border-color: #d9e3f2;
+            box-shadow: 0 16px 35px rgba(32,49,75,0.09);
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
         }
 
         .contact-icon {
-            width: 58px;
-            height: 58px;
-            margin: 0 auto 19px;
+            flex: 0 0 60px;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 18px;
             background: #eaf0fa;
             color: #5278b5;
-            font-size: 1.35rem;
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover .contact-icon {
+            background: #dfe9f8;
+            transform: scale(1.06) rotate(-4deg);
+        }
+
+        .contact-card-content {
+            flex: 1;
+            min-width: 0;
         }
 
         .contact-card h3 {
             color: #263650;
             font-family: 'Outfit', sans-serif;
-            font-size: 1.18rem;
-            margin-bottom: 9px;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
         }
 
         .contact-card p {
             color: #8490a1;
-            font-size: 0.88rem;
-            line-height: 1.7;
-            margin-bottom: 18px;
-            overflow-wrap: anywhere;
+            font-size: 0.87rem;
+            line-height: 1.65;
+            margin-bottom: 13px;
         }
 
         .contact-action {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 8px;
-            padding: 10px 17px;
-            background: #edf2fa;
             color: #42679f;
-            border-radius: 9px;
-            font-size: 0.84rem;
+            font-size: 0.86rem;
             font-weight: 700;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
+        }
+
+        .contact-action i {
+            font-size: 0.78rem;
+            transition: transform 0.25s ease;
         }
 
         .contact-action:hover {
-            background: #294873;
-            color: white;
+            color: #243d68;
+        }
+
+        .contact-action:hover i {
+            transform: translate(3px, -2px);
         }
 
         .contact-email {
+            display: inline-block;
             color: #5575a7;
-            font-weight: 600;
+            font-weight: 700;
             text-decoration: none;
-            font-size: 0.88rem;
+            font-size: 0.86rem;
+            overflow-wrap: anywhere;
+            transition: color 0.2s ease;
         }
 
         .contact-email:hover {
+            color: #243d68;
             text-decoration: underline;
         }
 
-        /* Instagram Button */
+        /* Instagram hover */
 
-        .instagram-action:hover {
-            background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-            color: white;
-            box-shadow: 0 8px 20px rgba(214, 41, 118, 0.25);
+        .instagram-card:hover .contact-icon {
+            background: #fceaf2;
+            color: #d62976;
         }
 
-        /* TikTok Button */
+        .instagram-action:hover {
+            color: #d62976;
+        }
+
+        /* TikTok hover */
+
+        .tiktok-card:hover .contact-icon {
+            background: #e9f7f8;
+            color: #111111;
+        }
 
         .tiktok-action:hover {
-            background: #010101;
+            color: #111111;
+        }
+
+        /* Email hover */
+
+        .email-card:hover .contact-icon {
+            background: #e7effc;
+            color: #345f9e;
+        }
+
+        /* Availability banner */
+
+        .availability-banner {
+            max-width: 850px;
+            margin: 25px auto 0;
+            padding: 25px 30px;
+            background: linear-gradient(110deg, #e7eef9, #f0f4fb);
+            border: 1px solid #dce6f4;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .availability-banner:hover {
+            border-color: #bfd0e9;
+            box-shadow: 0 12px 28px rgba(48,76,119,0.07);
+            transform: translateY(-3px);
+        }
+
+        .availability-content {
+            display: flex;
+            align-items: center;
+            gap: 17px;
+            min-width: 0;
+        }
+
+        .availability-icon {
+            flex: 0 0 52px;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: #ffffff;
+            color: #5278b5;
+            font-size: 1.25rem;
+            box-shadow: 0 5px 15px rgba(32,49,75,0.06);
+        }
+
+        .availability-text h3 {
+            font-family: 'Outfit', sans-serif;
+            color: #263650;
+            font-size: 1.12rem;
+            margin-bottom: 4px;
+        }
+
+        .availability-text p {
+            color: #718096;
+            font-size: 0.87rem;
+            line-height: 1.65;
+        }
+
+        .availability-button {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 13px 19px;
+            background: #294873;
             color: #ffffff;
-            box-shadow: 4px 4px 0 #25f4ee, -4px -4px 0 #fe2c55;
+            border-radius: 11px;
+            font-size: 0.86rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 6px 15px rgba(41,72,115,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .availability-button:hover {
+            background: #3b5e91;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 22px rgba(41,72,115,0.2);
+        }
+
+        .availability-button i {
+            transition: transform 0.25s ease;
+        }
+
+        .availability-button:hover i {
+            transform: translateX(4px);
         }
 
         /* Footer */
@@ -955,8 +1109,11 @@
 
             .contact-grid {
                 grid-template-columns: 1fr;
-                max-width: 480px;
-                margin: auto;
+                max-width: 540px;
+            }
+
+            .availability-banner {
+                max-width: 540px;
             }
 
             .footer {
@@ -1002,6 +1159,63 @@
 
             .project-content {
                 padding: 23px;
+            }
+
+            .contact-section {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .contact-heading {
+                margin-bottom: 32px;
+            }
+
+            .contact-card {
+                padding: 21px 18px;
+                gap: 15px;
+            }
+
+            .contact-icon {
+                flex-basis: 52px;
+                width: 52px;
+                height: 52px;
+                font-size: 1.2rem;
+                border-radius: 15px;
+            }
+
+            .contact-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .contact-card p {
+                font-size: 0.83rem;
+            }
+
+            .availability-banner {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 22px 19px;
+                gap: 18px;
+            }
+
+            .availability-content {
+                align-items: flex-start;
+                gap: 13px;
+            }
+
+            .availability-icon {
+                flex-basis: 45px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+
+            .availability-text h3 {
+                font-size: 1.05rem;
+            }
+
+            .availability-button {
+                width: 100%;
             }
         }
     </style>
@@ -1306,7 +1520,7 @@
         </section>
 
 
-        <!-- CONTACT ME -->
+        <!-- CONTACT ME - REDESIGNED -->
 
         <section class="contact-section" id="contact">
 
@@ -1319,15 +1533,19 @@
                     </div>
 
                     <h2 class="section-heading">
-                        Let's <span>Connect.</span>
+                        Let's <span>Connect!</span>
                     </h2>
 
                     <p>
-                        Feel free to reach out. I'd be happy to connect with you.
+                        Whether you have an opportunity, a project idea,
+                        or simply want to say hello, I'd love to hear from you.
+                        Feel free to reach out through any of the platforms below.
                     </p>
 
                 </div>
 
+
+                <!-- CONTACT CARDS -->
 
                 <div class="contact-grid">
 
@@ -1338,127 +1556,154 @@
                             <i class="fab fa-linkedin-in"></i>
                         </div>
 
-                        <h3>LinkedIn</h3>
+                        <div class="contact-card-content">
 
-                        <p>
-                            Connect with me professionally and explore
-                            my academic and career journey.
-                        </p>
+                            <h3>LinkedIn</h3>
 
-                        <a href="https://www.linkedin.com/in/mohdkhuzairy"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="contact-action">
+                            <p>
+                                Let's connect professionally and grow our
+                                networks. I'm always happy to meet new people.
+                            </p>
 
-                            Visit LinkedIn
-                            <i class="fas fa-arrow-up-right-from-square"></i>
+                            <a href="https://www.linkedin.com/in/mohdkhuzairy"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="contact-action">
 
-                        </a>
+                                Connect on LinkedIn
+                                <i class="fas fa-arrow-up-right-from-square"></i>
+
+                            </a>
+
+                        </div>
 
                     </div>
 
 
                     <!-- Instagram -->
-                    <div class="contact-card reveal">
+                    <div class="contact-card instagram-card reveal">
 
                         <div class="contact-icon">
                             <i class="fab fa-instagram"></i>
                         </div>
 
-                        <h3>Instagram</h3>
+                        <div class="contact-card-content">
 
-                        <p>
-                            Follow me on Instagram to keep up with
-                            my personal updates and activities.
-                        </p>
+                            <h3>Instagram</h3>
 
-                        <a href="https://www.instagram.com/mhd._khuz?evlk=MW5wZWFyYW4zZjE4bw%3D%3D&utm_source=qr"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="contact-action instagram-action">
+                            <p>
+                                A little glimpse of my life beyond academics,
+                                including personal updates and activities.
+                            </p>
 
-                            <i class="fab fa-instagram"></i>
-                            Visit Instagram
+                            <a href="https://www.instagram.com/mhd._khuz?evlk=MW5wZWFyYW4zZjE4bw%3D%3D&utm_source=qr"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="contact-action instagram-action">
 
-                        </a>
+                                Follow My Instagram
+                                <i class="fas fa-arrow-up-right-from-square"></i>
+
+                            </a>
+
+                        </div>
 
                     </div>
 
 
                     <!-- TikTok -->
-                    <div class="contact-card reveal">
+                    <div class="contact-card tiktok-card reveal">
 
                         <div class="contact-icon">
                             <i class="fab fa-tiktok"></i>
                         </div>
 
-                        <h3>TikTok</h3>
+                        <div class="contact-card-content">
 
-                        <p>
-                            Find me on TikTok and explore the videos
-                            and content I share.
-                        </p>
+                            <h3>TikTok</h3>
 
-                        <a href="https://www.tiktok.com/@harrybahnie"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="contact-action tiktok-action">
+                            <p>
+                                Check out the videos and content I share.
+                                There's more to me than just technology!
+                            </p>
 
-                            <i class="fab fa-tiktok"></i>
-                            Visit TikTok
+                            <a href="https://www.tiktok.com/@harrybahnie"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="contact-action tiktok-action">
 
-                        </a>
+                                Visit My TikTok
+                                <i class="fas fa-arrow-up-right-from-square"></i>
+
+                            </a>
+
+                        </div>
 
                     </div>
 
 
                     <!-- Email -->
-                    <div class="contact-card reveal">
+                    <div class="contact-card email-card reveal">
 
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
 
-                        <h3>Email</h3>
+                        <div class="contact-card-content">
 
-                        <p>
-                            Have a question or opportunity?
-                            You can reach me through my email.
-                        </p>
+                            <h3>Email</h3>
 
-                        <a href="mailto:harykhuzairy@gmail.com"
-                           class="contact-email">
+                            <p>
+                                Have a question, collaboration idea or opportunity?
+                                My inbox is always open.
+                            </p>
 
-                            harykhuzairy@gmail.com
+                            <a href="mailto:harykhuzairy@gmail.com"
+                               class="contact-email">
 
-                        </a>
+                                harykhuzairy@gmail.com
+                                <i class="fas fa-arrow-up-right-from-square"></i>
+
+                            </a>
+
+                        </div>
 
                     </div>
 
+                </div>
 
-                    <!-- Availability -->
-                    <div class="contact-card reveal">
 
-                        <div class="contact-icon">
+                <!-- SEPARATE TIMETABLE BANNER -->
+
+                <div class="availability-banner reveal">
+
+                    <div class="availability-content">
+
+                        <div class="availability-icon">
                             <i class="fas fa-calendar-check"></i>
                         </div>
 
-                        <h3>My Availability</h3>
+                        <div class="availability-text">
 
-                        <p>
-                            Interested in knowing when I'm available?
-                            Check my academic timetable.
-                        </p>
+                            <h3>Want to know when I'm available?</h3>
 
-                        <a href="biodata.html#timetable"
-                           class="contact-action">
+                            <p>
+                                Take a look at my university timetable
+                                and find a suitable time to connect.
+                            </p>
 
-                            View My Timetable
-                            <i class="fas fa-arrow-right"></i>
-
-                        </a>
+                        </div>
 
                     </div>
+
+                    <a href="biodata.html#timetable"
+                       class="availability-button">
+
+                        <i class="fas fa-calendar-days"></i>
+                        View My Timetable
+                        <i class="fas fa-arrow-right"></i>
+
+                    </a>
 
                 </div>
 
